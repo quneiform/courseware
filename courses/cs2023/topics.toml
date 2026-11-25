@@ -1,0 +1,54 @@
+edition = "CS2023"
+curriculum_authors = "ACM, IEEE Computer Society and AAAI Joint Task Force"
+curriculum = "https://csed.acm.org/knowledge-areas/"
+report = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm"
+guide_author = "Qune courseware contributors"
+
+[[areas]]
+id = "MSF"
+title = "Mathematical and Statistical Foundations"
+source = "https://csed.acm.org/mathematical-and-statistical-foundations/"
+units = ["MSF-Discrete"]
+summary = "Use finite examples to decide what a statement claims before trying to prove it."
+
+[[areas.topics]]
+id = "images-and-preimages"
+title = "Images and preimages"
+units = ["MSF-Discrete"]
+reading = "A routing function sends requests to handlers. Two different requests can share a handler. Write down the image of a set of requests and the preimage of a set of handlers. Which inclusion between those sets would guarantee that every chosen request reaches an allowed handler?"
+references = [{ author = "Heather Macbeth", title = "The Mechanics of Proof · Functions", url = "https://hrmacbeth.github.io/math2001/08_Functions.html" }]
+
+[[areas.topics]]
+id = "induction-and-invariants"
+title = "Induction and invariants"
+units = ["MSF-Discrete"]
+reading = "A loop grows a sorted prefix by one element at a time. Write its invariant for a prefix of length zero. Then identify exactly which comparison and insertion steps you need to preserve that invariant at the next length."
+references = [{ author = "Heather Macbeth", title = "The Mechanics of Proof · Induction", url = "https://hrmacbeth.github.io/math2001/06_Induction.html" }]
+
+[[areas]]
+id = "AL"
+title = "Algorithmic Foundations"
+source = "https://csed.acm.org/algorithms-and-complexity/"
+units = ["AL-Foundational"]
+summary = "Choose a data representation and measure the work needed for the operations your program actually performs."
+
+[[areas.topics]]
+id = "vector-insertion"
+title = "What does insertion move?"
+units = ["AL-Foundational"]
+reading = "Sketch a vector of five labels in memory. Count how many labels move when you insert a sixth at the beginning, middle and end. Separate the cost of shifting labels from the cost of growing the allocation when capacity is exhausted."
+references = [{ author = "Brown Cognitive Engineering Lab", title = "Interactive Rust Book · Vectors", url = "https://rust-book.cs.brown.edu/ch08-01-vectors.html" }]
+
+[[areas]]
+id = "FPL"
+title = "Foundations of Programming Languages"
+source = "https://csed.acm.org/programming-languages/"
+units = ["FPL-Types", "FPL-Functional"]
+summary = "Read a type declaration as a description of which values a program must handle."
+
+[[areas.topics]]
+id = "sum-types-and-cases"
+title = "Sum types and case analysis"
+units = ["FPL-Types", "FPL-Functional"]
+reading = "Represent a message as either a command or a reply. Add a third variant and predict which match expressions must change. Compare the compiler’s list of uncovered cases with the cases you would need in a proof about every message."
+references = [{ author = "Brown Cognitive Engineering Lab", title = "Interactive Rust Book · Match", url = "https://rust-book.cs.brown.edu/ch06-02-match.html" }]

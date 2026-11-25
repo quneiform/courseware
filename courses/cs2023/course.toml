@@ -1,0 +1,18 @@
+format_version = 1
+profile = "cs2023"
+revision = "c78d9d9ffa9c8e4b9bf967c65fa53fbabc435a0d2dcc4aa63d78197bea38bb94"
+
+[tablet]
+id = "cs2023"
+title = "CS2023 Topic Map"
+
+[navigation]
+id = "contents"
+title = "Contents"
+kind = "qn.ux.v05.TreeNavigation"
+source = "topics.toml"
+
+[workspace]
+language = "text"
+editor = "reading"
+default_chapter = "msf"
