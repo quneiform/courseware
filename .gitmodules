@@ -1,0 +1,6 @@
+[submodule "courses/mechanics-of-proof/upstream"]
+	path = courses/mechanics-of-proof/upstream
+	url = https://github.com/hrmacbeth/math2001.git
+[submodule "cel-rust-book"]
+	path = courses/rust-book/upstream
+	url = https://github.com/cognitive-engineering-lab/rust-book.git
