@@ -1,0 +1,15 @@
+revision: "edition-1"
+tablet { id: "sample" title: "A sample textbook" }
+navigation { id: "contents" title: "Contents" kind: "qn.ux.v05.TreeNavigation" source: "src/SUMMARY.md"
+  roots { chapter_id: "one" title: "First" children { chapter_id: "two" title: "Second" } }
+}
+workspace { language: "rust" editor: "exercise" default_chapter: "one" }
+chapters { id: "one" title: "First" revision: "edition-1"
+  blocks { markdown: "Introduction" }
+  blocks { code { language: "rust" source: "fn main() {}\n" } }
+  blocks { interaction_id: "q" }
+  blocks { notice: "An example notice" }
+  blocks { steps { title: "Sequence" steps { label: "1" text: "Read." } } }
+}
+chapters { id: "two" title: "Second" revision: "edition-1" }
+questions { id: "q" kind: SHORT_ANSWER prompt: "Name a type" starter: "" quiz: "types" }

@@ -1,0 +1,70 @@
+edition = "2023";
+package courseware.v05;
+option features.field_presence = IMPLICIT;
+
+message Tablet { string id = 1; string title = 2; }
+message Workspace { string language = 1; string editor = 2; string default_chapter = 3; }
+message NavigationNode {
+  string chapter_id = 1;
+  string title = 2;
+  repeated NavigationNode children = 3;
+}
+message Navigation {
+  string id = 1;
+  string title = 2;
+  string kind = 3;
+  string source = 4;
+  repeated NavigationNode roots = 5;
+}
+// A package authors these fields in TOML. The adapter derives navigation.roots.
+message CourseDeclaration {
+  uint32 format_version = 1;
+  string profile = 2;
+  string revision = 3;
+  Tablet tablet = 4;
+  Navigation navigation = 5;
+  Workspace workspace = 6;
+}
+
+message Code { string language = 1; string source = 2; }
+message Step { string label = 1; string text = 2; }
+message Steps { string title = 1; repeated Step steps = 2; }
+message Block {
+  oneof content {
+    string markdown = 1;
+    Code code = 2;
+    string interaction_id = 3;
+    string notice = 4;
+    Steps steps = 5;
+  }
+}
+message Chapter {
+  string id = 1;
+  string title = 2;
+  string revision = 3;
+  repeated Block blocks = 4;
+}
+enum QuestionKind {
+  QUESTION_KIND_UNSPECIFIED = 0;
+  MULTIPLE_CHOICE = 1;
+  SHORT_ANSWER = 2;
+  TRACING = 3;
+}
+message Question {
+  string id = 1;
+  QuestionKind kind = 2;
+  string prompt = 3;
+  string starter = 4 [features.field_presence = EXPLICIT];
+  repeated string choices = 5;
+  bool multiple = 6;
+  string quiz = 7;
+}
+// Portable reader-facing data. Checking and revealing answers are adapter operations.
+message CourseReading {
+  string revision = 1;
+  Tablet tablet = 2;
+  Navigation navigation = 3;
+  Workspace workspace = 4;
+  repeated Chapter chapters = 5;
+  repeated Question questions = 6;
+}
