@@ -1,0 +1,6 @@
+id = "and-to-or"
+chapter = "05-logic--logical-equivalence"
+path = "Math2001/05_Logic/01_Logical_Equivalence.lean"
+first_line = 83
+last_line = 84
+toolchain = "leanprover/lean4:v4.3.0"

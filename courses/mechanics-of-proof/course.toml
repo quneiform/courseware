@@ -1,0 +1,18 @@
+format_version = 1
+profile = "mechanics-of-proof"
+revision = "e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b"
+
+[tablet]
+id = "mechanics-of-proof"
+title = "The Mechanics of Proof"
+
+[navigation]
+id = "contents"
+title = "Contents"
+kind = "qn.ux.v05.TreeNavigation"
+source = "html/index.html"
+
+[workspace]
+language = "lean4"
+editor = "exercise"
+default_chapter = "00-introduction"
