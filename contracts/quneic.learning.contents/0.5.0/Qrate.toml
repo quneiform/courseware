@@ -1,0 +1,6 @@
+[module]
+name = "quneic.learning.contents.contract"
+version = "0.5.0"
+description = "Publish derived Tablet Contents and adjacent actions from an admitted course edition."
+[requires]
+"quneic.learning.contract" = "=0.5.0"

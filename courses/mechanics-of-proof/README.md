@@ -19,3 +19,7 @@ python3 checks/validate.py
 ```
 
 The check reads the statement from the pinned Git object, verifies the compiler identifier and checks three fixed proof bodies. Lean accepts the constructed disjunction, rejects a term of the wrong type, and rejects the original incomplete proof with warnings treated as errors. This example uses Lean core alone. The full upstream exercises use additional dependencies declared in the upstream Lake manifest.
+
+## Add practice at another section
+
+The section inventory lists all 60 stable cell IDs. In §8.3 the placement `macbeth-functions-to-images` opens the connected lesson on images and preimages. The public learning map records the passage, exercise and assessment separately. In §6.1 the editable **A loop counter invariant** listing gives the learner a smaller induction step to work on. Its author, prompt and Lean source live in the optional `[author_starter]` table. This listing is open practice. [Section inventory](coverage.md) · [Worked placement](../connected-lessons/learning-map.toml) · [Editable starter](exercise.toml)

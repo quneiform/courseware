@@ -1,0 +1,152 @@
+{
+  "id": {
+    "uuid": {
+      "value": "hMA3YR0JXlGq8NXm59jk1Q=="
+    }
+  },
+  "courses": [
+    {
+      "repository": "rust-book",
+      "commit": "88250e0392cef0622f318e35469108d68694c1f7",
+      "manifestPath": "course.toml",
+      "revision": {
+        "uuid": {
+          "value": "3R1hOJkcVACUSTfjktX2kQ=="
+        }
+      }
+    },
+    {
+      "repository": "cs2023",
+      "commit": "d695652fd2e628b2c5b681bbb9d1d1a20ff9bba8086c035e218e791c972a2cc8",
+      "manifestPath": "course.toml",
+      "revision": {
+        "uuid": {
+          "value": "0EHHo5V1WPWxITRZyKn3LA=="
+        }
+      }
+    },
+    {
+      "repository": "mechanics-of-proof",
+      "commit": "e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b",
+      "manifestPath": "course.toml",
+      "revision": {
+        "uuid": {
+          "value": "zsWreZ18XGGXQMhMm9I6sA=="
+        }
+      }
+    },
+    {
+      "repository": "connected-lessons",
+      "commit": "5fb71adbe2e728b2ef4f8ab5c934c5389e08b55dadc590a013754179fbf0d5c4",
+      "manifestPath": "lessons.toml",
+      "revision": {
+        "uuid": {
+          "value": "xNznwa+QXXmWWpMgBWzY0A=="
+        }
+      }
+    }
+  ],
+  "maps": [
+    {
+      "repository": "connected-lessons",
+      "commit": "2f51ba539366c8294631293510610da595f0b8ead8f1853587066a463bcefa22",
+      "manifestPath": "learning-map.toml",
+      "revision": {
+        "uuid": {
+          "value": "UfGlN6I2VjS/kAKHH2t7pw=="
+        }
+      }
+    }
+  ],
+  "topics": [
+    {
+      "id": {
+        "uuid": {
+          "value": "PEcFx9vAUUmcPHcFgmYfFQ=="
+        }
+      },
+      "label": "Sets and functions",
+      "frameworkUris": [
+        "https://csed.acm.org/knowledge-areas/"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": {
+        "uuid": {
+          "value": "oHGauVs7UeivUOgdfpHwbQ=="
+        }
+      },
+      "description": "Compute image and preimage on a finite function and prove their inclusion equivalence."
+    }
+  ],
+  "exercises": [
+    {
+      "cell": {
+        "tabletRevision": {
+          "uuid": {
+            "value": "xNznwa+QXXmWWpMgBWzY0A=="
+          }
+        },
+        "cell": {
+          "uuid": {
+            "value": "YpfRbUtoU1+pGKW7MRTGSw=="
+          }
+        }
+      },
+      "outcome": {
+        "uuid": {
+          "value": "oHGauVs7UeivUOgdfpHwbQ=="
+        }
+      },
+      "checker": {
+        "uuid": {
+          "value": "wHdcTvaOUd+yApnbnt1FlA=="
+        }
+      },
+      "completionRule": {
+        "uuid": {
+          "value": "1AGZRt0QVMqLoudW1SwRzg=="
+        }
+      }
+    }
+  ],
+  "aliases": {
+    "connected-lessons": {
+      "uuid": {
+        "value": "xNznwa+QXXmWWpMgBWzY0A=="
+      }
+    },
+    "cs2023": {
+      "uuid": {
+        "value": "0EHHo5V1WPWxITRZyKn3LA=="
+      }
+    },
+    "image-preimage-inclusion": {
+      "uuid": {
+        "value": "oHGauVs7UeivUOgdfpHwbQ=="
+      }
+    },
+    "lesson-map": {
+      "uuid": {
+        "value": "UfGlN6I2VjS/kAKHH2t7pw=="
+      }
+    },
+    "mechanics-of-proof": {
+      "uuid": {
+        "value": "zsWreZ18XGGXQMhMm9I6sA=="
+      }
+    },
+    "rust-book": {
+      "uuid": {
+        "value": "3R1hOJkcVACUSTfjktX2kQ=="
+      }
+    },
+    "sets-and-functions": {
+      "uuid": {
+        "value": "PEcFx9vAUUmcPHcFgmYfFQ=="
+      }
+    }
+  }
+}

@@ -1,6 +1,11 @@
-//! Load declared course packages into portable reading data for a host application.
 mod chapter;
 mod cs2023;
+pub mod mapping;
+#[allow(dead_code, clippy::all)]
+mod schema {
+    include!(concat!(env!("OUT_DIR"), "/schema.rs"));
+}
+
 mod mechanics;
 mod navigation;
 mod quiz;
@@ -9,6 +14,7 @@ mod source;
 use anyhow::{Context, Result, bail, ensure};
 pub use navigation::{Navigation, NavigationNode};
 mod reading;
+mod redirects;
 pub use quiz::{Question, QuestionKind};
 pub use reading::{Block, Chapter};
 use serde::Deserialize;
@@ -75,6 +81,7 @@ pub struct Course {
     pub navigation: Navigation,
     pub chapters: Vec<Chapter>,
     pub workspace: Workspace,
+    origins: BTreeMap<String, (String, Vec<u8>)>,
     questions: BTreeMap<String, quiz::Entry>,
     assets: BTreeMap<String, Vec<u8>>,
 }
@@ -91,7 +98,11 @@ impl Course {
         let config = fs::read_to_string(root.join("course.toml"))
             .with_context(|| format!("read {}/course.toml", root.display()))?;
         let spec: Declaration = toml::from_str(&config).context("course.toml")?;
-        ensure!(spec.format_version == 1, "unsupported course format");
+        ensure!(
+            spec.format_version == 1
+                || (matches!(spec.format_version, 2 | 3) && spec.profile == "cel-rust-book"),
+            "unsupported course format"
+        );
         ensure!(
             valid_identity(&spec.tablet.id) && !spec.tablet.title.trim().is_empty(),
             "invalid course Tablet identity or title"
@@ -122,6 +133,7 @@ impl Course {
             revision: spec.revision,
             workspace: spec.workspace,
             chapters: Vec::new(),
+            origins: BTreeMap::new(),
             questions: BTreeMap::new(),
             assets: BTreeMap::new(),
         }
@@ -132,18 +144,48 @@ impl Course {
         spec: Declaration,
         run_git: impl FnOnce(&Path, &[&str]) -> Result<Vec<u8>>,
     ) -> Result<Self> {
-        let files = source::archive(
-            &root.join("upstream"),
-            &spec.revision,
-            &["src", "quizzes", "listings"],
-            run_git,
-        )?;
+        let mut paths = vec!["src", "quizzes", "listings"];
+        if spec.format_version == 3 {
+            paths.push("book.toml");
+        }
+        let files = source::archive(&root.join("upstream"), &spec.revision, &paths, run_git)?;
+        let include_origins = spec.format_version >= 2;
+        let normalize_redirects = spec.format_version == 3;
         let mut course = Self::empty(spec);
         course.navigation.load(&files)?;
+        let redirects = if normalize_redirects {
+            let chapters = course
+                .navigation
+                .chapters()
+                .map(|n| n.chapter_id.clone())
+                .collect();
+            Some(redirects::Redirects::load(
+                files
+                    .get("book.toml")
+                    .context("missing pinned mdBook configuration")?,
+                &chapters,
+            )?)
+        } else {
+            None
+        };
         for node in course.navigation.chapters() {
             let path = format!("src/{}.md", node.chapter_id);
-            let blocks = chapter::parse(&path, &files, &mut course.questions)
+            let mut blocks = chapter::parse(&path, &files, &mut course.questions)
                 .with_context(|| path.clone())?;
+            if let Some(redirects) = &redirects {
+                for block in &mut blocks {
+                    if let Block::Markdown(markdown) = block {
+                        redirects.apply(markdown)?;
+                    }
+                }
+            }
+            if include_origins {
+                use sha2::{Digest, Sha256};
+                let digest = Sha256::digest(files.get(&path).context("missing pinned chapter")?);
+                course
+                    .origins
+                    .insert(node.chapter_id.clone(), (path, digest.to_vec()));
+            }
             course.chapters.push(Chapter {
                 id: node.chapter_id.clone(),
                 title: node.title.clone(),

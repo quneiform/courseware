@@ -1,0 +1,203 @@
+{
+  "source_revision": "88250e0392cef0622f318e35469108d68694c1f7",
+  "figures": [
+    {
+      "destination": "img/experiment/brown-logo.png",
+      "chapters": [
+        "experiment-intro"
+      ],
+      "source_sha256": "bde039884954d36eb3c32035db46d8f2714d2dd34b71f6fe39dba8dc2f3d1d92",
+      "png": "brown-logo.png",
+      "png_sha256": "e52c7a5344ea772bfb69bcdf49f5a2dcfb39a19e16f09b0444632ec6e9f8157c"
+    },
+    {
+      "destination": "img/ferris/does_not_compile.svg",
+      "chapters": [
+        "ch00-00-introduction"
+      ],
+      "source_sha256": "36ccf9f4bacd571f6e09d9a67b6e4b42a9f015bac8923ee6658c547ca330e4d1",
+      "png": "does_not_compile.png",
+      "png_sha256": "508be65a26862e2a19f56909023fe23c7cbe66d295f0c8644a685b1743af344a"
+    },
+    {
+      "destination": "img/ferris/not_desired_behavior.svg",
+      "chapters": [
+        "ch00-00-introduction"
+      ],
+      "source_sha256": "47b7adac4986fcc948d56a2bccea0226724a842ac0ca25bfba1ade2cc099b333",
+      "png": "not_desired_behavior.png",
+      "png_sha256": "ef2bdb727b03df68c9fbbfb48f1a90fbd317f679e9bf18fe3e5dc4945af24b00"
+    },
+    {
+      "destination": "img/ferris/panics.svg",
+      "chapters": [
+        "ch00-00-introduction"
+      ],
+      "source_sha256": "27f1dd68bde067c25be6468bbffe42bec9e908d522e68fbc4e632f0ce07838a5",
+      "png": "panics.png",
+      "png_sha256": "951ac7c09a8b96b20b4810c2dff75767db79df5bd2ef97393fe1735236da5781"
+    },
+    {
+      "destination": "img/trpl14-01.png",
+      "chapters": [
+        "ch14-02-publishing-to-crates-io"
+      ],
+      "source_sha256": "92c98731fe641694229f5a3987fe138bfd8140401150dcae901ac448c47c96a4",
+      "png": "trpl14-01.png",
+      "png_sha256": "052a9234ceac74531535bd935febc7f063b617c4c22dda7b1812d16be90d0554"
+    },
+    {
+      "destination": "img/trpl14-02.png",
+      "chapters": [
+        "ch14-02-publishing-to-crates-io"
+      ],
+      "source_sha256": "c358af6e959d113b87fdeeaf48366b8d244358b4f978634a5193f4b23b2239e9",
+      "png": "trpl14-02.png",
+      "png_sha256": "fb1ddd20e137e88549019d989874387f42e63259010488c47dedb1853f7a91ea"
+    },
+    {
+      "destination": "img/trpl14-03.png",
+      "chapters": [
+        "ch14-02-publishing-to-crates-io"
+      ],
+      "source_sha256": "fdcd8e7295875a128fc5dca22e574df2679f362764899030236cc377e88d228d",
+      "png": "trpl14-03.png",
+      "png_sha256": "3784634de146018b52eb52c041e8f2f81bff952d78af254c1e4168ce338d4d69"
+    },
+    {
+      "destination": "img/trpl14-04.png",
+      "chapters": [
+        "ch14-02-publishing-to-crates-io"
+      ],
+      "source_sha256": "7a6b53117942889e9e79e879446fe7f983889a4f42f11c6be2ab51a2af150c25",
+      "png": "trpl14-04.png",
+      "png_sha256": "d403434743664d7d5eeca4384a4ac7845095464fd3e2a2716a105511a8bf7590"
+    },
+    {
+      "destination": "img/trpl15-01.svg",
+      "chapters": [
+        "ch15-01-box"
+      ],
+      "source_sha256": "8acb018bf29622099bdbdced748b545bb00094314c94ade7acd57580ecf51808",
+      "png": "trpl15-01.png",
+      "png_sha256": "63ba447bae54ae9f2ce2ca6aff736407ea32cf329886a55171c3fb9302bd4672"
+    },
+    {
+      "destination": "img/trpl15-02.svg",
+      "chapters": [
+        "ch15-01-box"
+      ],
+      "source_sha256": "b8a95ade376ae0d2b7f0d40bcf4ce355c91bab3436fc02db0b03bf420089da24",
+      "png": "trpl15-02.png",
+      "png_sha256": "6ce56cf705882a2c599ab77ef21b3487a062182081dd610090807479a8f9748a"
+    },
+    {
+      "destination": "img/trpl15-03.svg",
+      "chapters": [
+        "ch15-04-rc"
+      ],
+      "source_sha256": "552ce09ecf7b274f4dd3013deb9b5420d46b6a60061b90a09fbdbbede7d3c114",
+      "png": "trpl15-03.png",
+      "png_sha256": "5dc44c2a71bf03713912aeef93209533a971f42c542af5c04a4c4ad260e31eb3"
+    },
+    {
+      "destination": "img/trpl15-04.svg",
+      "chapters": [
+        "ch15-06-reference-cycles"
+      ],
+      "source_sha256": "8e64624821092a7bf919f77e4f6793542436bd2abd0e70c368089ea79fdd9d43",
+      "png": "trpl15-04.png",
+      "png_sha256": "75de7e0b6dae74db8b41096c94fd5302b195e497b1dd48446656a149f427c908"
+    },
+    {
+      "destination": "img/trpl17-01.svg",
+      "chapters": [
+        "ch17-00-async-await"
+      ],
+      "source_sha256": "bc398c71c89d705d6a9b3097ed9985d57068f4c5dff309c89d094f4fbcc4115b",
+      "png": "trpl17-01.png",
+      "png_sha256": "35f33768ebedfdf62b887fe3d9da12efcc36c3d808f939bf74099e4e3d12dabe"
+    },
+    {
+      "destination": "img/trpl17-02.svg",
+      "chapters": [
+        "ch17-00-async-await"
+      ],
+      "source_sha256": "22f511c8e20639c3cdc52f81984cc4d4d997b7280c2ba56471db6431bd9ecf88",
+      "png": "trpl17-02.png",
+      "png_sha256": "840b92ddd499af5aaf0b502da39edd8b46801535563d347b7931fb856fe1af2c"
+    },
+    {
+      "destination": "img/trpl17-03.svg",
+      "chapters": [
+        "ch17-00-async-await"
+      ],
+      "source_sha256": "286e0f9fe7f9873df0b2ddfbc09ec6c49f203859bfb0d0ccf2c3c4f2d6174f56",
+      "png": "trpl17-03.png",
+      "png_sha256": "67019dcf93a8882588ed4d38760295243b75e31d5b639e26ae7dbaf50e6fed9a"
+    },
+    {
+      "destination": "img/trpl17-04.svg",
+      "chapters": [
+        "ch17-05-traits-for-async"
+      ],
+      "source_sha256": "7da012b1be16513957733a276b675065319099164fbaa8cfbda5ec27a920e465",
+      "png": "trpl17-04.png",
+      "png_sha256": "a54ee1df7b109d6842b371ec3670224cd0842a6cd2e3f1c13d9b2b5cdfed8ad2"
+    },
+    {
+      "destination": "img/trpl17-05.svg",
+      "chapters": [
+        "ch17-05-traits-for-async"
+      ],
+      "source_sha256": "9d20b5d0aa8747126dfa005215caf88800f39dbf1d06542bb35987da51816e20",
+      "png": "trpl17-05.png",
+      "png_sha256": "e218a2ed2924388cb369422ab8bce452b6d4217d9d47f1ebccbdac773c707de6"
+    },
+    {
+      "destination": "img/trpl17-06.svg",
+      "chapters": [
+        "ch17-05-traits-for-async"
+      ],
+      "source_sha256": "b62908d098d094a27ab9f1a63c89415206ad72b66a2dabbc5f01f73b8e8cb99c",
+      "png": "trpl17-06.png",
+      "png_sha256": "992f409068936c521fe220aaccadb3da4d1469bf854c87c0ad78038bbdde72d3"
+    },
+    {
+      "destination": "img/trpl17-07.svg",
+      "chapters": [
+        "ch17-05-traits-for-async"
+      ],
+      "source_sha256": "1490943621afca41abba7ccdcd4a2eed4fe7a910f314361e44a85f5e25503b63",
+      "png": "trpl17-07.png",
+      "png_sha256": "edc31e8a143b31a4ce30008e09bc2c12ec39e6e7579662ce5d0e4473dbb7c4f5"
+    },
+    {
+      "destination": "img/trpl17-08.svg",
+      "chapters": [
+        "ch17-05-traits-for-async"
+      ],
+      "source_sha256": "2f8fc1250fe7c335f2ad176ed9d0bf840b909d06def9b2578c245c7b1738addf",
+      "png": "trpl17-08.png",
+      "png_sha256": "f18f0ce39067ca143c1aef3b4febeb0b9e3279ee2a3868fc3d0ed48825adf252"
+    },
+    {
+      "destination": "img/trpl17-09.svg",
+      "chapters": [
+        "ch17-05-traits-for-async"
+      ],
+      "source_sha256": "31b246b6c5c25869fbb3c3913d720bdc975302db03835c719bdaed53b3ee2dc4",
+      "png": "trpl17-09.png",
+      "png_sha256": "3b3f6fd2309acf9b2d23adadb568a9475782ab54e92a389b71c305a08dd10944"
+    },
+    {
+      "destination": "img/trpl21-01.png",
+      "chapters": [
+        "ch21-00-final-project-a-web-server"
+      ],
+      "source_sha256": "a9974283e76f80f6dedf0e438f4d778ce9103971638e8cc7067baa4774c187b4",
+      "png": "trpl21-01.png",
+      "png_sha256": "67b634c004a2a41693514f3470a2026f04347611fcf3b225b50cd6b368787ddf"
+    }
+  ]
+}

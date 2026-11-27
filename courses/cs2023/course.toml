@@ -1,6 +1,6 @@
 format_version = 1
 profile = "cs2023"
-revision = "c78d9d9ffa9c8e4b9bf967c65fa53fbabc435a0d2dcc4aa63d78197bea38bb94"
+revision = "d695652fd2e628b2c5b681bbb9d1d1a20ff9bba8086c035e218e791c972a2cc8"
 
 [tablet]
 id = "cs2023"

@@ -1,25 +1,42 @@
 [module]
 name = "courseware.adapters"
-version = "0.5.0"
+version = "0.5.2"
 description = "Adapt course packages into ordered chapters, navigation and exercise checks."
 
 [requires]
 "qn.build.cargo" = "^0.3"
+"qn.tablet.reader.contract" = "=0.5.0"
+"quneic.learning.contract" = "=0.5.0"
+
+[run]
+prepare-import = ["validate-learning-map"]
+archive-session = ["validate-learning-map", "--archive-session-v1"]
 
 [build.courseware-adapters]
 provider = "qn.build.cargo"
 schema = 2
 toolchain = "rust"
-inputs = ["src/**/*", "data/permissions.toml"]
+inputs = ["src/**/*", "schema/courseware.fds", "schema/archive.fds", "qn.tablet.reader.contract//tablet.fds", "data/permissions.toml", "build.rs", "contract.toml", "quneic.learning.contract//release.toml", "quneic.learning.contract//learning.fds"]
 
 [build.courseware-adapters.manifest]
-lib = { path = "src/lib.rs" }
-package = { name = "courseware-adapters", version = "0.5.0", edition = "2024" }
+bin = [{ name = "validate-learning-map", path = "src/bin/validate-learning-map.rs" }]
+package = { build = "build.rs", name = "courseware-adapters", version = "0.5.2", edition = "2024" }
 
 [build.courseware-adapters.manifest.dependencies]
 anyhow = { version = "1" }
 regex = { version = "1" }
+pulldown-cmark = { version = "=0.13.6", default-features = false }
 serde = { version = "1", features = ["derive"] }
 sha2 = { version = "0.10" }
 tar = { version = "0.4" }
+toml = { version = "0.9" }
+serde_json = { version = "1" }
+uuid = { version = "1", features = ["v5"] }
+
+buffa = { version = "=0.9.2", features = ["json"] }
+buffa-types = { version = "=0.9.2", features = ["json"] }
+buffa-descriptor = { version = "=0.9.2", features = ["json"] }
+[build.courseware-adapters.manifest.build-dependencies]
+buffa-build = { version = "=0.9.2" }
+sha2 = { version = "0.10" }
 toml = { version = "0.9" }

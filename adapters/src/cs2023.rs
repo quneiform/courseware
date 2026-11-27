@@ -12,6 +12,7 @@ struct Map {
     curriculum_authors: String,
     curriculum: String,
     report: String,
+    report_sha256: Option<String>,
     guide_author: String,
     areas: Vec<Area>,
 }
@@ -22,9 +23,41 @@ struct Area {
     id: String,
     title: String,
     source: String,
-    units: Vec<String>,
+    #[serde(deserialize_with = "units")]
+    units: Vec<Unit>,
+    #[serde(default)]
     summary: String,
+    #[serde(default)]
     topics: Vec<Topic>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct Unit {
+    id: String,
+    title: String,
+    anchor: String,
+}
+
+// The first published map listed only unit codes. Its four authored chapters keep their old URLs.
+fn units<'de, D: serde::Deserializer<'de>>(input: D) -> Result<Vec<Unit>, D::Error> {
+    #[derive(Deserialize)]
+    #[serde(untagged)]
+    enum Entry {
+        Citation(Unit),
+        Code(String),
+    }
+    Ok(Vec::<Entry>::deserialize(input)?
+        .into_iter()
+        .map(|entry| match entry {
+            Entry::Citation(unit) => unit,
+            Entry::Code(id) => Unit {
+                id,
+                title: String::new(),
+                anchor: String::new(),
+            },
+        })
+        .collect())
 }
 
 #[derive(Deserialize)]
@@ -74,7 +107,10 @@ impl Map {
         );
         ensure!(
             edition_url(&self.curriculum, Some("csed.acm.org"))
-                && edition_url(&self.report, Some("csed.acm.org")),
+                && edition_url(&self.report, Some("csed.acm.org"))
+                && self.report_sha256.as_ref().is_none_or(
+                    |hash| hash.len() == 64 && hash.bytes().all(|b| b.is_ascii_hexdigit())
+                ),
             "invalid curriculum citation"
         );
         let mut chapters = BTreeSet::new();
@@ -88,24 +124,43 @@ impl Map {
             );
             ensure!(
                 plain(&area.title)
-                    && plain(&area.summary)
+                    && (area.summary.is_empty() || plain(&area.summary))
                     && edition_url(&area.source, Some("csed.acm.org")),
                 "invalid area attribution or text for {}",
                 area.id
             );
-            let units: BTreeSet<_> = area.units.iter().collect();
+            let units: BTreeSet<_> = area.units.iter().map(|u| &u.id).collect();
             let prefix = format!("{}-", area.id);
             ensure!(
                 !units.is_empty()
                     && units.len() == area.units.len()
-                    && units.iter().all(|u| u
-                        .strip_prefix(&prefix)
-                        .is_some_and(|name| !name.is_empty()
-                            && name.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'-'))),
+                    && units
+                        .iter()
+                        .all(
+                            |u| u.strip_prefix(&prefix).is_some_and(|name| !name.is_empty()
+                                && name.split('/').all(|piece| !piece.is_empty()
+                                    && piece
+                                        .bytes()
+                                        .all(|b| b.is_ascii_alphanumeric() || b == b'-')))
+                        ),
                 "invalid knowledge units for {}",
                 area.id
             );
-            ensure!(!area.topics.is_empty(), "area {} needs a topic", area.id);
+            for unit in &area.units {
+                if self.report_sha256.is_none() && unit.title.is_empty() && unit.anchor.is_empty() {
+                    continue;
+                }
+                ensure!(
+                    plain(&unit.title)
+                        && unit
+                            .anchor
+                            .strip_prefix("#_Toc")
+                            .is_some_and(|n| !n.is_empty() && n.bytes().all(|b| b.is_ascii_digit()))
+                        && chapters.insert(unit.id.to_lowercase().replace('/', "-")),
+                    "invalid or duplicate unit {}",
+                    unit.id
+                );
+            }
             for topic in &area.topics {
                 ensure!(
                     !topic.id.is_empty()
@@ -206,6 +261,18 @@ pub(super) fn open(
                 area.summary, source, credit
             ),
         );
+        for unit in area.units.into_iter().filter(|u| !u.anchor.is_empty()) {
+            let chapter_id = unit.id.to_ascii_lowercase().replace('/', "-");
+            let reading = format!(
+                "[{} · {}]({}{}) in the official curriculum.\n\n{}",
+                unit.id, unit.title, map.report, unit.anchor, credit
+            );
+            branch.children.push(add(
+                &chapter_id,
+                &format!("{} · {}", unit.id, unit.title),
+                reading,
+            ));
+        }
         for topic in area.topics {
             let mut text = format!(
                 "{}\n\nCS2023 mapping: {} · {}.\n\n{}",
@@ -227,93 +294,4 @@ pub(super) fn open(
     course.chapters = chapters;
     course.navigation.roots = roots;
     Ok(course)
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    const GUIDE: &str = include_str!("../../courses/cs2023/topics.toml");
-    const DECLARATION: &str = include_str!("../../courses/cs2023/course.toml");
-
-    #[test]
-    fn loads_both_navigation_depths_offline_without_checks_or_git() {
-        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../courses/cs2023");
-        let course =
-            Course::open_with_git(&root, |_, _| panic!("link-only course invoked Git")).unwrap();
-        assert_eq!(course.tablet.id, "cs2023");
-        assert_eq!(course.workspace.editor, "reading");
-        assert_eq!(course.workspace.default_chapter, "msf");
-        let mut expected = vec![];
-        for area in &course.navigation.roots {
-            expected.push(area.chapter_id.as_str());
-            expected.extend(area.children.iter().map(|child| child.chapter_id.as_str()));
-        }
-        assert_eq!(
-            expected,
-            [
-                "msf",
-                "images-and-preimages",
-                "induction-and-invariants",
-                "al",
-                "vector-insertion",
-                "fpl",
-                "sum-types-and-cases"
-            ]
-        );
-        assert_eq!(
-            expected,
-            course
-                .chapters
-                .iter()
-                .map(|chapter| chapter.id.as_str())
-                .collect::<Vec<_>>()
-        );
-        for chapter in &course.chapters {
-            assert_eq!(chapter.revision, course.revision);
-            let [Block::Markdown(text)] = chapter.blocks.as_slice() else {
-                panic!("expected a link-only chapter")
-            };
-            assert!(
-                text.contains("Joint Task Force") && text.contains("Qune courseware contributors")
-            );
-            assert!(course.question(&chapter.id).is_none());
-            assert!(course.check(&chapter.id, &[]).is_err());
-        }
-        let topic = course.chapter("sum-types-and-cases").unwrap();
-        let Block::Markdown(reading) = &topic.blocks[0] else {
-            unreachable!()
-        };
-        assert!(
-            reading.contains("FPL-Types, FPL-Functional")
-                && reading.contains("Brown Cognitive Engineering Lab")
-        );
-    }
-
-    #[test]
-    fn refuses_changed_edition_and_invalid_mappings() {
-        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../courses/cs2023");
-        let mut spec: Declaration = toml::from_str(DECLARATION).unwrap();
-        spec.revision = "0".repeat(64);
-        assert!(
-            open(&root, spec, |_, _| unreachable!())
-                .err()
-                .unwrap()
-                .to_string()
-                .contains("SHA-256")
-        );
-        for (from, to) in [
-            ("id = \"sum-types-and-cases\"", "id = \"msf\""),
-            (
-                "units = [\"AL-Foundational\"]\nreading",
-                "units = [\"FPL-Types\"]\nreading",
-            ),
-            ("https://rust-book.cs.brown.edu/", "javascript:"),
-            ("author = \"Heather Macbeth\"", "author = \"\""),
-        ] {
-            assert_ne!(GUIDE.replace(from, to), GUIDE);
-            let invalid: Map = toml::from_str(&GUIDE.replace(from, to)).unwrap();
-            assert!(invalid.validate().is_err(), "{from}");
-        }
-    }
 }

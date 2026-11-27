@@ -1,0 +1,12 @@
+[module]
+name = "courseware.rust-book"
+version = "0.5.1"
+
+[requires]
+"qn.tablet.reader" = "=0.5.2"
+
+[[artifacts]]
+role = "qune.compose.Skene"
+path = "entry.skene.pb"
+sha256 = "9bd2ff2b775cb20290eb13c393ee097d8f8140ac467b2ecc5a3903cd8bead437"
+byte_size = 464

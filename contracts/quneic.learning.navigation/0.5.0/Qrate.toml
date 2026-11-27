@@ -1,0 +1,6 @@
+[module]
+name = "quneic.learning.navigation.contract"
+version = "0.5.0"
+description = "Native navigation publication method for Learning course maps."
+[requires]
+"quneic.learning.contract" = "=0.5.0"

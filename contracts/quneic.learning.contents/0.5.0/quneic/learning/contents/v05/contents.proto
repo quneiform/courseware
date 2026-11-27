@@ -1,0 +1,23 @@
+edition = "2023";
+package quneic.learning.contents.v05;
+import "core.proto";
+
+// The owner selects an exact edition, a new supplemental hub identity, each
+// destination invocation, and optional previously admitted control sets.
+message Existing {
+  qune.core.Cut cut = 1;
+  qune.core.ThingRef actions = 2;
+  qune.core.ThingRef chapter = 3;
+}
+message PublishRequest {
+  qune.core.Cut edition_cut = 1;
+  qune.core.ThingRef edition = 2;
+  qune.core.ThingRef hub = 3;
+  qune.core.Uuid posit_id = 4;
+  repeated qune.core.Invocation invocations = 5;
+  repeated Existing existing = 6;
+  qune.core.Digest collection_artifact = 7;
+}
+service Contents {
+  rpc Publish(PublishRequest) returns (qune.core.Posit);
+}

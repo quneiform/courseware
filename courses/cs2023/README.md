@@ -1,7 +1,25 @@
 # CS2023 Topic Map
 
-Open this directory as a course. The Tablet contains original study prompts mapped to selected knowledge units in three CS2023 areas. The official curriculum identifies 17 areas. The included subset connects Rust practice with discrete mathematics and proof. [CS2023 knowledge areas](https://csed.acm.org/knowledge-areas/)
+Open this package to browse all 17 knowledge areas and 166 entries under **Knowledge Units** in the final CS2023 report. Each unit opens its own citation to the publisher’s section. The five platform-specific SPD-SEP entries retain their distinct official identifiers. The report, published by the ACM, IEEE Computer Society and AAAI Joint Task Force, supplies the names, codes and ordering. [Official knowledge areas](https://csed.acm.org/knowledge-areas/) · [Report](https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm)
 
-The ACM, IEEE Computer Society and AAAI Joint Task Force authored the curricular framework. Qune courseware contributors wrote the prompts and selected the mappings. Each area links to its official page and the report. Companion readings link to Brown CEL or Heather Macbeth. Their texts stay on their publishers’ sites. Reading a topic can update the reader’s bookmark. Opening a citation awards no credit.
+## Authored coverage
 
-Edit `topics.toml` to change the map. Area entries list CS2023 unit codes; topic entries choose from their enclosing area’s units. Area and topic order determines Contents order. Set `revision` in `course.toml` to the SHA-256 of the exact new `topics.toml` bytes. The adapter validates the digest before opening the edition.
+| Authored prompt | Mapped knowledge units |
+| --- | --- |
+| Images and preimages | MSF-Discrete |
+| Induction and invariants | MSF-Discrete |
+| What does insertion move? | AL-Foundational |
+| Sum types and case analysis | FPL-Types, FPL-Functional |
+
+Qune courseware contributors wrote these four prompts. The other 162 indexed units are available for authors to add prompts. All 166 publisher links are citations. This reading Tablet assigns no grades. The connected lesson separately binds checks to an authored exercise. [Exact unit inventory and prompts](topics.toml) · [Connected lesson placements](../connected-lessons/learning-map.toml)
+
+## Reproduce the inventory
+
+Download the official report HTML and pass it to the Python 3.11+ verifier. It checks the publisher bytes against SHA-256 `8fc7212255af71eb4458122ccb8a93052601e6a2fff59d7c2f4e2db18081b72e`, extracts the linked table of contents and compares all area and unit codes, titles, order and citation anchors to the local inventory.
+
+```sh
+curl -fLsS https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm -o /tmp/CS2023-Report.htm
+python3 checks/inventory.py /tmp/CS2023-Report.htm
+```
+
+Update the package revision in `course.toml` to the SHA-256 of the exact `topics.toml` bytes after editing the map. Existing authored topic IDs are stable links.

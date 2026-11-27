@@ -1,0 +1,5 @@
+id = "image-preimage-inclusion"
+toolchain = "leanprover/lean4:v4.3.0"
+statement = "theorem image_preimage {A B : Type} (f : A → B) (S : A → Prop) (T : B → Prop) :\n    (∀ b, (∃ a, S a ∧ f a = b) → T b) ↔ (∀ a, S a → T (f a)) := by"
+allowed_names = ["h", "a", "ha", "b", "hb", "f", "witness", "eq"]
+allowed_axioms = []

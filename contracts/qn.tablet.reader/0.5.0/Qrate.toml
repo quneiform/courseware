@@ -1,0 +1,4 @@
+[module]
+name = "qn.tablet.reader.contract"
+version = "0.5.0"
+description = "Chapter and Block descriptors from the Tablet reader owner."

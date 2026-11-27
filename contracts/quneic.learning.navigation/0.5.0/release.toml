@@ -1,0 +1,5 @@
+name = "quneic.learning.navigation"
+version = "0.5.0"
+file = "navigation.fds"
+media_type = "application/vnd.google.protobuf.FileDescriptorSet"
+sha256 = "d2fae26670ea3d03c3146c78bb4d756d65874cba9bfdb7ef74d644ae33caf67c"

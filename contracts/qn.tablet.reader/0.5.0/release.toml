@@ -1,0 +1,7 @@
+name = "qn.tablet.reader"
+version = "0.5.0"
+media_type = "application/vnd.google.protobuf.FileDescriptorSet"
+file = "tablet.fds"
+sha256 = "4844e684a528f4a1cce6d29d80a678fb79e09c057f36973ae52a267a88ed645e"
+source = "crates/qn-tablet-reader/schema/tablet/tablet.proto"
+source_commit = "351e0975c2db5fa52fa6fedfafd3217fb098dd25"

@@ -1,0 +1,24 @@
+edition = "2023";
+package quneic.learning.navigation.v05;
+
+import "core.proto";
+import "quneic/learning/v1/learning.proto";
+
+message Edition {
+  qune.core.ThingRef revision = 1;
+  qune.core.Cut cut = 2;
+}
+
+// The owner binds this exact request after checking each destination invocation.
+// Invocation data identifies its call. Execution requires a separate owner grant.
+message PublishRequest {
+  quneic.learning.v1.ReadAtRequest source = 1;
+  repeated Edition destinations = 2;
+  repeated qune.core.Invocation invocations = 3;
+  qune.core.Uuid posit_id = 4;
+  qune.core.Cut producer_cut = 5;
+}
+
+service Navigation {
+  rpc Publish(PublishRequest) returns (qune.core.Posit);
+}

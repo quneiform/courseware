@@ -1,0 +1,16 @@
+
+ù
+/quneic/learning/navigation/v05/navigation.protoquneic.learning.navigation.v05
+core.proto!quneic/learning/v1/learning.proto"\
+Edition/
+revision (2.qune.core.ThingRefRrevision 
+cut (2.qune.core.CutRcut"°
+PublishRequest9
+source (2!.quneic.learning.v1.ReadAtRequestRsourceK
+destinations (2'.quneic.learning.navigation.v05.EditionRdestinations7
+invocations (2.qune.core.InvocationRinvocations*
+posit_id (2.qune.core.UuidRpositId1
+producer_cut (2.qune.core.CutRproducerCut2Y
+
+NavigationK
+Publish..quneic.learning.navigation.v05.PublishRequest.qune.core.Positbeditionspè

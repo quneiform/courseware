@@ -1,0 +1,21 @@
+# Required when following a Learning placement to its Tablet chapter.
+# The grant for the chapter input must match the cut and Thing in LearningView.
+requires {
+  schema { full_name: "qn.tablet.reader.attributed.v05.Reader/Render"
+    descriptor { algorithm: SHA256 value: "\144\334\106\145\057\330\374\107\002\326\057\152\226\225\341\333\125\053\134\114\274\214\253\145\211\123\344\246\073\177\334\115" } }
+  details {
+    [type.googleapis.com/qune.connection.v1.ReadDestination] {
+      source_method { full_name: "quneic.learning.v1.Learning/ReadAt"
+    descriptor { algorithm: SHA256 value: "\146\144\265\336\210\276\367\047\135\163\034\276\012\332\067\351\000\231\222\016\304\370\304\066\215\233\133\160\033\143\267\251" } }
+      destination_method { full_name: "qn.tablet.reader.attributed.v05.Reader/Render"
+    descriptor { algorithm: SHA256 value: "\144\334\106\145\057\330\374\107\002\326\057\152\226\225\341\333\125\053\134\114\274\214\253\145\211\123\344\246\073\177\334\115" } }
+      cut { schema { full_name: "quneic.learning.v1.LearningView"
+    descriptor { algorithm: SHA256 value: "\146\144\265\336\210\276\367\047\135\163\034\276\012\332\067\351\000\231\222\016\304\370\304\066\215\233\133\160\033\143\267\251" } }
+      path { elements { field_number: 1 field_name: "basis" } elements { field_number: 2 field_name: "course_cut" } } }
+      thing { schema { full_name: "quneic.learning.v1.LearningView"
+    descriptor { algorithm: SHA256 value: "\146\144\265\336\210\276\367\047\135\163\034\276\012\332\067\351\000\231\222\016\304\370\304\066\215\233\133\160\033\143\267\251" } }
+      path { elements { field_number: 1 field_name: "basis" } elements { field_number: 1 field_name: "passage" } elements { field_number: 2 field_name: "cell" } } }
+      destination_slot: "chapter"
+    }
+  }
+}
