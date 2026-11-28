@@ -1,0 +1,318 @@
+{
+  "format_version": 1,
+  "revision": "88250e0392cef0622f318e35469108d68694c1f7",
+  "members": [
+    {
+      "source": "src/ch01-01-installation.md",
+      "fragment": "installation"
+    },
+    {
+      "source": "src/ch01-01-installation.md",
+      "fragment": "troubleshooting"
+    },
+    {
+      "source": "src/ch01-02-hello-world.md",
+      "fragment": "rust-program-basics"
+    },
+    {
+      "source": "src/ch02-00-guessing-game-tutorial.md",
+      "fragment": "comparing-the-guess-to-the-secret-number"
+    },
+    {
+      "source": "src/ch02-00-guessing-game-tutorial.md",
+      "fragment": "generating-a-random-number"
+    },
+    {
+      "source": "src/ch02-00-guessing-game-tutorial.md",
+      "fragment": "handling-potential-failure-with-result"
+    },
+    {
+      "source": "src/ch02-00-guessing-game-tutorial.md",
+      "fragment": "quitting-after-a-correct-guess"
+    },
+    {
+      "source": "src/ch02-00-guessing-game-tutorial.md",
+      "fragment": "storing-values-with-variables"
+    },
+    {
+      "source": "src/ch03-01-variables-and-mutability.md",
+      "fragment": "declaring-constants"
+    },
+    {
+      "source": "src/ch03-01-variables-and-mutability.md",
+      "fragment": "shadowing"
+    },
+    {
+      "source": "src/ch03-01-variables-and-mutability.md",
+      "fragment": "variables-and-mutability"
+    },
+    {
+      "source": "src/ch03-02-data-types.md",
+      "fragment": "data-types"
+    },
+    {
+      "source": "src/ch03-02-data-types.md",
+      "fragment": "integer-types"
+    },
+    {
+      "source": "src/ch03-02-data-types.md",
+      "fragment": "the-tuple-type"
+    },
+    {
+      "source": "src/ch03-05-control-flow.md",
+      "fragment": "control-flow"
+    },
+    {
+      "source": "src/ch03-05-control-flow.md",
+      "fragment": "looping-through-a-collection-with-for"
+    },
+    {
+      "source": "src/ch04-02-references-and-borrowing.md",
+      "fragment": "data-must-outlive-all-of-its-references"
+    },
+    {
+      "source": "src/ch04-02-references-and-borrowing.md",
+      "fragment": "dereferencing-a-pointer-accesses-its-data"
+    },
+    {
+      "source": "src/ch04-02-references-and-borrowing.md",
+      "fragment": "mutable-references-provide-unique-and-non-owning-access-to-data"
+    },
+    {
+      "source": "src/ch04-02-references-and-borrowing.md",
+      "fragment": "references-and-borrowing"
+    },
+    {
+      "source": "src/ch04-02-references-and-borrowing.md",
+      "fragment": "the-borrow-checker-finds-permission-violations"
+    },
+    {
+      "source": "src/ch04-03-fixing-ownership-errors.md",
+      "fragment": "fixing-a-safe-program-mutating-different-tuple-fields"
+    },
+    {
+      "source": "src/ch04-03-fixing-ownership-errors.md",
+      "fragment": "fixing-an-unsafe-program-copying-vs-moving-out-of-a-collection"
+    },
+    {
+      "source": "src/ch04-04-slices.md",
+      "fragment": "range-syntax"
+    },
+    {
+      "source": "src/ch04-04-slices.md",
+      "fragment": "string-slices"
+    },
+    {
+      "source": "src/ch04-04-slices.md",
+      "fragment": "string-slices-as-parameters"
+    },
+    {
+      "source": "src/ch04-04-slices.md",
+      "fragment": "the-slice-type"
+    },
+    {
+      "source": "src/ch05-01-defining-structs.md",
+      "fragment": "creating-different-types-with-tuple-structs"
+    },
+    {
+      "source": "src/ch05-01-defining-structs.md",
+      "fragment": "creating-instances-from-other-instances-with-struct-update-syntax"
+    },
+    {
+      "source": "src/ch05-03-method-syntax.md",
+      "fragment": "method-syntax"
+    },
+    {
+      "source": "src/ch06-01-defining-an-enum.md",
+      "fragment": "enum-values"
+    },
+    {
+      "source": "src/ch06-02-match.md",
+      "fragment": "patterns-that-bind-to-values"
+    },
+    {
+      "source": "src/ch06-02-match.md",
+      "fragment": "the-match-control-flow-construct"
+    },
+    {
+      "source": "src/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.md",
+      "fragment": "exposing-paths-with-the-pub-keyword"
+    },
+    {
+      "source": "src/ch07-04-bringing-paths-into-scope-with-the-use-keyword.md",
+      "fragment": "creating-idiomatic-use-paths"
+    },
+    {
+      "source": "src/ch07-05-separating-modules-into-different-files.md",
+      "fragment": "alternate-file-paths"
+    },
+    {
+      "source": "src/ch08-02-strings.md",
+      "fragment": "concatenating-with--or-format"
+    },
+    {
+      "source": "src/ch08-02-strings.md",
+      "fragment": "storing-utf-8-encoded-text-with-strings"
+    },
+    {
+      "source": "src/ch09-02-recoverable-errors-with-result.md",
+      "fragment": "a-shortcut-for-propagating-errors-the--operator"
+    },
+    {
+      "source": "src/ch09-03-to-panic-or-not-to-panic.md",
+      "fragment": "cases-in-which-you-have-more-information-than-the-compiler"
+    },
+    {
+      "source": "src/ch09-03-to-panic-or-not-to-panic.md",
+      "fragment": "creating-custom-types-for-validation"
+    },
+    {
+      "source": "src/ch09-03-to-panic-or-not-to-panic.md",
+      "fragment": "guidelines-for-error-handling"
+    },
+    {
+      "source": "src/ch09-03-to-panic-or-not-to-panic.md",
+      "fragment": "to-panic-or-not-to-panic"
+    },
+    {
+      "source": "src/ch10-01-syntax.md",
+      "fragment": "performance-of-code-using-generics"
+    },
+    {
+      "source": "src/ch10-02-traits.md",
+      "fragment": "implementing-a-trait-on-a-type"
+    },
+    {
+      "source": "src/ch10-02-traits.md",
+      "fragment": "traits-as-parameters"
+    },
+    {
+      "source": "src/ch10-03-lifetime-syntax.md",
+      "fragment": "validating-references-with-lifetimes"
+    },
+    {
+      "source": "src/ch11-01-writing-tests.md",
+      "fragment": "how-to-write-tests"
+    },
+    {
+      "source": "src/ch11-01-writing-tests.md",
+      "fragment": "the-anatomy-of-a-test-function"
+    },
+    {
+      "source": "src/ch11-02-running-tests.md",
+      "fragment": "controlling-how-tests-are-run"
+    },
+    {
+      "source": "src/ch11-02-running-tests.md",
+      "fragment": "ignoring-tests-unless-specifically-requested"
+    },
+    {
+      "source": "src/ch11-02-running-tests.md",
+      "fragment": "running-a-subset-of-tests-by-name"
+    },
+    {
+      "source": "src/ch13-01-closures.md",
+      "fragment": "capturing-references-or-moving-ownership"
+    },
+    {
+      "source": "src/ch13-01-closures.md",
+      "fragment": "closure-type-inference-and-annotation"
+    },
+    {
+      "source": "src/ch13-01-closures.md",
+      "fragment": "moving-captured-values-out-of-closures"
+    },
+    {
+      "source": "src/ch13-02-iterators.md",
+      "fragment": "the-iterator-trait-and-the-next-method"
+    },
+    {
+      "source": "src/ch14-02-publishing-to-crates-io.md",
+      "fragment": "documentation-comments-as-tests"
+    },
+    {
+      "source": "src/ch14-02-publishing-to-crates-io.md",
+      "fragment": "exporting-a-convenient-public-api-with-pub-use"
+    },
+    {
+      "source": "src/ch15-02-deref.md",
+      "fragment": "implicit-deref-coercions-with-functions-and-methods"
+    },
+    {
+      "source": "src/ch15-02-deref.md",
+      "fragment": "treating-smart-pointers-like-regular-references"
+    },
+    {
+      "source": "src/ch15-06-reference-cycles.md",
+      "fragment": "preventing-reference-cycles-turning-an-rct-into-a-weakt"
+    },
+    {
+      "source": "src/ch16-01-threads.md",
+      "fragment": "creating-a-new-thread-with-spawn"
+    },
+    {
+      "source": "src/ch16-01-threads.md",
+      "fragment": "using-move-closures-with-threads"
+    },
+    {
+      "source": "src/ch16-01-threads.md",
+      "fragment": "waiting-for-all-threads-to-finish"
+    },
+    {
+      "source": "src/ch16-03-shared-state.md",
+      "fragment": "sharing-a-mutext-between-multiple-threads"
+    },
+    {
+      "source": "src/ch17-01-futures-and-syntax.md",
+      "fragment": "our-first-async-program"
+    },
+    {
+      "source": "src/ch17-02-concurrency-with-async.md",
+      "fragment": "message-passing"
+    },
+    {
+      "source": "src/ch17-02-concurrency-with-async.md",
+      "fragment": "sending-data-between-two-tasks-using-message-passing"
+    },
+    {
+      "source": "src/ch18-01-what-is-oo.md",
+      "fragment": "encapsulation-that-hides-implementation-details"
+    },
+    {
+      "source": "src/ch18-02-trait-objects.md",
+      "fragment": "using-trait-objects-to-abstract-over-shared-behavior"
+    },
+    {
+      "source": "src/ch18-03-oo-design-patterns.md",
+      "fragment": "encoding-states-and-behavior-as-types"
+    },
+    {
+      "source": "src/ch19-03-pattern-syntax.md",
+      "fragment": "ignoring-values-in-a-pattern"
+    },
+    {
+      "source": "src/ch20-02-advanced-traits.md",
+      "fragment": "advanced-traits"
+    },
+    {
+      "source": "src/ch20-02-advanced-traits.md",
+      "fragment": "implementing-external-traits-with-the-newtype-pattern"
+    },
+    {
+      "source": "src/ch20-03-advanced-types.md",
+      "fragment": "dynamically-sized-types-and-the-sized-trait"
+    },
+    {
+      "source": "src/ch20-03-advanced-types.md",
+      "fragment": "type-synonyms-and-type-aliases"
+    },
+    {
+      "source": "src/ch20-05-macros.md",
+      "fragment": "custom-derive-macros"
+    },
+    {
+      "source": "src/ch20-05-macros.md",
+      "fragment": "macros"
+    }
+  ]
+}

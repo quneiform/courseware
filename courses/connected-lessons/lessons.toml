@@ -1,0 +1,18 @@
+format_version = 1
+id = "connected-lessons"
+entry_tablet = "cs2023"
+
+[[lessons]]
+id = "images-and-preimages"
+title = "Images and preimages"
+prompt = """Two different requests can reach the same handler. Implement the image of a set of requests and the preimage of a set of allowed handlers. Then prove the relationship for any function: its image of S lies inside T exactly when S lies inside its preimage of T."""
+attribution = "Original exercise by Qune courseware contributors"
+further_reading = "https://ocw.mit.edu/courses/18-s097-applied-category-theory-january-iap-2019/pages/lecture-videos-and-readings/"
+
+[lessons.rust]
+starter = "images-and-preimages/starter.rs"
+check = "images-and-preimages/check.rs"
+
+[lessons.lean]
+starter = "images-and-preimages/starter.lean"
+check = "images-and-preimages/check.toml"

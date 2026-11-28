@@ -1,0 +1,4 @@
+[module]
+name = "quneic.learning.contract"
+version = "0.5.0"
+description = "Versioned Learning protobuf descriptors owned by quneic.learning."

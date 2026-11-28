@@ -1,12 +1,29 @@
 [package]
 name = "courseware-adapters"
-version = "0.5.0"
+version = "0.5.2"
 edition = "2024"
+
+autotests = false
+
+[[test]]
+name = "courses"
+path = "tests/courses.rs"
 
 [dependencies]
 anyhow = "1"
 regex = "1"
+pulldown-cmark = { version = "=0.13.6", default-features = false }
 serde = { version = "1", features = ["derive"] }
 sha2 = "0.10"
 tar = "0.4"
 toml = "0.9"
+serde_json = "1"
+uuid = { version = "1", features = ["v5"] }
+
+buffa = { version = "=0.9.2", features = ["json"] }
+buffa-types = { version = "=0.9.2", features = ["json"] }
+buffa-descriptor = { version = "=0.9.2", features = ["json"] }
+[build-dependencies]
+buffa-build = "=0.9.2"
+toml = "0.9"
+sha2 = "0.10"

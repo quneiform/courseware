@@ -1,0 +1,32 @@
+edition = "2023";
+package courseware.archive.v1;
+option features.field_presence = IMPLICIT;
+import "courseware.proto";
+
+// A private local session holds the pinned course bytes and quiz keys at Open.
+// Each message has a four-byte big-endian length prefix (128 MiB maximum).
+// A hosted Open may request immutable Git archive bytes from its caller.
+service Reader {
+  rpc Open(OpenRequest) returns (Opened);
+  rpc Query(QueryRequest) returns (Answer);
+}
+message OpenRequest { bytes directory = 1; bool catalog = 2; bool hosted_git = 3; }
+message Location { string tablet = 1; string cell = 2; }
+message Placement { string id = 1; Location at = 2; Location exercise = 3; string topic = 4; string assesses = 5; }
+message Opened {
+  map<string, courseware.v05.CourseReading> courses = 1;
+  repeated Placement placements = 2;
+  bytes learning_root_json = 3; // Canonical LearningRoot protobuf JSON, for connected packages.
+}
+message QueryRequest {
+  string tablet = 1;
+  string key = 2;
+  enum Operation { UNSPECIFIED = 0; CHECK = 1; REVEAL = 2; ASSET = 3; LESSON_MANIFEST = 4; LESSON_ASSET = 5; }
+  Operation operation = 3;
+  repeated string answers = 4;
+}
+message Blob { string media_type = 1; bytes data = 2; }
+message Answer { oneof value { bool correct = 1; string explanation = 2; Blob blob = 3; } }
+message GitArchive { bytes directory = 1; string revision = 2; repeated string paths = 3; }
+message Request { oneof body { OpenRequest open = 1; QueryRequest query = 2; bytes archive = 3; } }
+message Response { oneof body { Opened opened = 1; Answer answer = 2; GitArchive git = 3; string failure = 4; } }

@@ -1,0 +1,43 @@
+format_version = 1
+id = "connected-lessons"
+
+[[courses]]
+alias = "rust-book"
+repository = "rust-book"
+manifest = "course.toml"
+
+[[courses]]
+alias = "cs2023"
+repository = "cs2023"
+manifest = "course.toml"
+
+[[courses]]
+alias = "mechanics-of-proof"
+repository = "mechanics-of-proof"
+manifest = "course.toml"
+
+[[courses]]
+alias = "connected-lessons"
+repository = "connected-lessons"
+manifest = "lessons.toml"
+
+[[maps]]
+alias = "lesson-map"
+repository = "connected-lessons"
+manifest = "learning-map.toml"
+
+[[topics]]
+id = "sets-and-functions"
+label = "Sets and functions"
+framework_uris = ["https://csed.acm.org/knowledge-areas/"]
+
+[[outcomes]]
+id = "image-preimage-inclusion"
+description = "Compute image and preimage on a finite function and prove their inclusion equivalence."
+
+[[exercises]]
+tablet = "connected-lessons"
+cell = "images-and-preimages"
+outcome = "image-preimage-inclusion"
+checker = "rust-and-lean"
+completion_rule = "both-checks-pass"

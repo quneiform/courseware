@@ -54,6 +54,18 @@ struct Exercise {
     first_line: usize,
     last_line: usize,
     toolchain: String,
+    author_starter: Option<AuthorStarter>,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct AuthorStarter {
+    id: String,
+    chapter: String,
+    title: String,
+    author: String,
+    prompt: String,
+    source: String,
 }
 
 fn text(html: &str) -> String {
@@ -162,6 +174,25 @@ pub(super) fn open(
                 source: format!("{}\n", starter.join("\n")),
             });
         }
+        if let Some(extra) = &ex.author_starter
+            && extra.chapter == id
+        {
+            ensure!(
+                crate::valid_identity(&extra.id)
+                    && [&extra.title, &extra.author, &extra.prompt, &extra.source]
+                        .iter()
+                        .all(|s| !s.trim().is_empty()),
+                "Incomplete authored starter"
+            );
+            blocks.push(Block::Markdown(format!(
+                "**{}**\n\n{}\n\nEditable practice · {}.",
+                extra.title, extra.prompt, extra.author
+            )));
+            blocks.push(Block::Code {
+                language: "lean4".into(),
+                source: extra.source.clone(),
+            });
+        }
         course.chapters.push(Chapter {
             id,
             title,
@@ -170,7 +201,12 @@ pub(super) fn open(
         });
     }
     ensure!(
-        ids.contains(&ex.chapter) && ids.contains(&course.workspace.default_chapter),
+        ids.contains(&ex.chapter)
+            && ids.contains(&course.workspace.default_chapter)
+            && ex
+                .author_starter
+                .as_ref()
+                .is_none_or(|x| ids.contains(&x.chapter)),
         "Missing exercise section or opening chapter"
     );
     Ok(course)

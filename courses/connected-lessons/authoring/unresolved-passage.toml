@@ -1,0 +1,8 @@
+format_version = 1
+id = "diagnostic-practice"
+
+[[placements]]
+id = "practice-lookup"
+at = { tablet = "rust-book", cell = "chapter-about-an-imaginary-loop" }
+exercise = { tablet = "connected-lessons", cell = "images-and-preimages" }
+topic = "sets-and-functions"

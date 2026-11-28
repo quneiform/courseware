@@ -1,0 +1,47 @@
+[module]
+name = "courseware.connected-courses"
+version = "0.5.3"
+
+[requires]
+"qn.tablet.app" = "=0.5.1"
+"qn.build.cargo" = "^0.3"
+"qn.tablet.reader" = "=0.5.1"
+
+[[artifacts]]
+role = "qune.compose.Skene"
+path = "entry.skene.pb"
+sha256 = "7369b3273ffaad09706d78c77d74f7ee60863e11148192a1e12dd969ad1be541"
+byte_size = 270
+
+[[subqrates]]
+path = "rust-book"
+name = "courseware.rust-book"
+range = "=0.5.0"
+
+[[subqrates]]
+path = "connected-lessons"
+name = "quneic.learning.connected-lessons"
+range = "=0.5.1"
+
+[run]
+desktop = ["connected-learning"]
+
+[build.connected-learning]
+provider = "qn.build.cargo"
+schema = 2
+toolchain = "rust"
+inputs = ["app/main.rs", "connected-lessons/root.json", "qn.tablet.app//templates/tablet_as_app.rs", "qn.tablet.app//templates/native_window.rs"]
+
+[build.connected-learning.manifest]
+package = { name = "connected-learning", edition = "2024" }
+bin = [{ name = "connected-learning", path = "app/main.rs" }]
+
+[build.connected-learning.manifest.dependencies]
+anyhow = { version = "1" }
+libc = { version = "0.2" }
+serde_json = { version = "1" }
+sha2 = { version = "0.10" }
+tempfile = { version = "3" }
+tao = { version = "=0.35.3", default-features = false, features = ["rwh_06"] }
+wry = { version = "=0.55.1", default-features = false }
+objc2-app-kit = { version = "=0.3.2", default-features = false, features = ["NSWindow"] }

@@ -1,0 +1,19 @@
+
+Ï
++quneic/learning/contents/v05/contents.protoquneic.learning.contents.v05
+core.proto"Š
+Existing 
+cut (2.qune.core.CutRcut-
+actions (2.qune.core.ThingRefRactions-
+chapter (2.qune.core.ThingRefRchapter"„
+PublishRequest/
+edition_cut (2.qune.core.CutR
+editionCut-
+edition (2.qune.core.ThingRefRedition%
+hub (2.qune.core.ThingRefRhub*
+posit_id (2.qune.core.UuidRpositId7
+invocations (2.qune.core.InvocationRinvocationsB
+existing (2&.quneic.learning.contents.v05.ExistingRexistingB
+collection_artifact (2.qune.core.DigestRcollectionArtifact2U
+ContentsI
+Publish,.quneic.learning.contents.v05.PublishRequest.qune.core.Positbeditionspè

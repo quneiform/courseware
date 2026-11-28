@@ -4,3 +4,15 @@ path = "Math2001/05_Logic/01_Logical_Equivalence.lean"
 first_line = 83
 last_line = 84
 toolchain = "leanprover/lean4:v4.3.0"
+
+[author_starter]
+id = "prefix-counter"
+chapter = "06-induction--introduction"
+title = "A loop counter invariant"
+author = "Qune courseware contributors"
+prompt = "After each item, a loop advances a counter by one. Assume the postcondition for a prefix of length n. Prove the same equality after both the prefix length and its counter advance. Then identify the initial count in the empty-prefix case."
+source = """
+example (count n : Nat) (invariant : count = n) :
+    Nat.succ count = Nat.succ n := by
+  sorry
+"""

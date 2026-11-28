@@ -1,0 +1,5 @@
+edition = "2023";
+package quneic.learning.contents.located.v05;
+import "quneic/learning/contents/v05/contents.proto";
+import "core.proto";
+service Contents { rpc Publish(quneic.learning.contents.v05.PublishRequest) returns (qune.core.Posit); }

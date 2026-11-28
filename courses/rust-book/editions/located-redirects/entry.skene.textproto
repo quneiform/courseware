@@ -1,0 +1,66 @@
+# Hello, World! in the format 3 redirect edition. All four source Things are enrolled independently.
+requires {
+  schema {
+    full_name: "qn.tablet.reader.located.v05.Reader/Render"
+    descriptor {
+      algorithm: SHA256
+      value: "\234\363|\230\037\237\200\375\324\177:\274\215f\341\031\020\2477T]#\236\000[\367\204\340\224\211\316\212"
+    }
+  }
+}
+provides {
+  schema {
+    full_name: "qn.tablet.v05.Chapter"
+    descriptor {
+      algorithm: SHA256
+      value: "HD\346\204\245(\364\241\314\346\322\235\200\246x\373y\340\234\005\1776\227:\345*&z\210\355d^"
+    }
+  }
+  provider {
+    uuid {
+      value: "\303\264\022\242h\334_\316\275\360E\212\tr\353\233"
+    }
+  }
+}
+provides {
+  schema {
+    full_name: "qn.tablet.reader.v05.Actions"
+    descriptor {
+      algorithm: SHA256
+      value: "\340F\205\000f\270m\001\261\302\205\246\234\250t\007\242\237\304\035y\266\3362\276\002\212\244|\225\210\177"
+    }
+  }
+  provider {
+    uuid {
+      value: "\303\264\022\242h\334_\316\275\360E\212\tr\353\233"
+    }
+  }
+}
+provides {
+  schema {
+    full_name: "qn.tablet.assets.v05.ChapterAssets"
+    descriptor {
+      algorithm: SHA256
+      value: "I\022Z\030\204\031\036\322\007\234\312LUhC\3521~\344\317\356\243\371\006;%\237\212G\016\3472"
+    }
+  }
+  provider {
+    uuid {
+      value: "\303\264\022\242h\334_\316\275\360E\212\tr\353\233"
+    }
+  }
+}
+provides {
+  schema {
+    full_name: "qn.tablet.location.v05.Location"
+    descriptor {
+      algorithm: SHA256
+      value: "g\356\222\326e\273\r\205\363|\324\005\313N?]b\032\002\363\326\024#>\371\230\026\344:\220\005!"
+    }
+  }
+  provider {
+    uuid {
+      value: "\303\264\022\242h\334_\316\275\360E\212\tr\353\233"
+    }
+  }
+}

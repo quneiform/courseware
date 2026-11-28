@@ -1,0 +1,10 @@
+edition = "2023";
+package qn.tablet.location.v05;
+option features.field_presence = IMPLICIT;
+import "core.proto";
+message Location {
+  qune.core.ThingRef chapter = 1;
+  string chapter_id = 2;
+  string revision = 3;
+  string fragment = 4; // Empty selects the entire Chapter.
+}

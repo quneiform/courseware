@@ -1,0 +1,18 @@
+format_version = 3
+profile = "cel-rust-book"
+revision = "88250e0392cef0622f318e35469108d68694c1f7"
+
+[tablet]
+id = "rust-book"
+title = "Rust Book"
+
+[navigation]
+id = "contents"
+title = "Contents"
+kind = "qn.ux.v05.TreeNavigation"
+source = "src/SUMMARY.md"
+
+[workspace]
+language = "rust"
+editor = "exercise"
+default_chapter = "ch01-02-hello-world"

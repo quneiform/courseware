@@ -1,0 +1,5 @@
+name = "quneic.learning.contents"
+version = "0.5.0"
+file = "contents.fds"
+media_type = "application/vnd.google.protobuf.FileDescriptorSet"
+sha256 = "9f7a21847ed0be1b62327c7f7f354680614d4282ca6c302c3d4bdfda041aaf7a"

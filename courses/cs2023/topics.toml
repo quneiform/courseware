@@ -3,12 +3,165 @@ curriculum_authors = "ACM, IEEE Computer Society and AAAI Joint Task Force"
 curriculum = "https://csed.acm.org/knowledge-areas/"
 report = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm"
 guide_author = "Qune courseware contributors"
+report_sha256 = "8fc7212255af71eb4458122ccb8a93052601e6a2fff59d7c2f4e2db18081b72e"
+
+[[areas]]
+id = "AI"
+title = "Artificial Intelligence"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703737"
+units = [
+  { id = "AI-Introduction", title = "Fundamental Issues", anchor = "#_Toc166703743" },
+  { id = "AI-Search", title = "Search", anchor = "#_Toc166703744" },
+  { id = "AI-KRR", title = "Fundamental Knowledge Representation and Reasoning", anchor = "#_Toc166703745" },
+  { id = "AI-ML", title = "Machine Learning", anchor = "#_Toc166703746" },
+  { id = "AI-SEP", title = "Applications and Societal Impact", anchor = "#_Toc166703747" },
+  { id = "AI-LRR", title = "Logical Representation and Reasoning", anchor = "#_Toc166703748" },
+  { id = "AI-Probability", title = "Probabilistic Representation and Reasoning", anchor = "#_Toc166703749" },
+  { id = "AI-Planning", title = "Planning", anchor = "#_Toc166703750" },
+  { id = "AI-Agents", title = "Agents and Cognitive Systems", anchor = "#_Toc166703751" },
+  { id = "AI-NLP", title = "Natural Language Processing", anchor = "#_Toc166703752" },
+  { id = "AI-Robotics", title = "Robotics", anchor = "#_Toc166703753" },
+  { id = "AI-Vision", title = "Perception and Computer Vision", anchor = "#_Toc166703754" },
+]
+
+[[areas]]
+id = "AL"
+title = "Algorithmic Foundations"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703759"
+units = [
+  { id = "AL-Foundational", title = "Foundational Data Structures and Algorithms", anchor = "#_Toc166703764" },
+  { id = "AL-Strategies", title = "Algorithmic Strategies", anchor = "#_Toc166703765" },
+  { id = "AL-Complexity", title = "Complexity", anchor = "#_Toc166703766" },
+  { id = "AL-Models", title = "Computational Models and Formal Languages", anchor = "#_Toc166703767" },
+  { id = "AL-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166703768" },
+]
+summary = "Choose a data representation and measure the work needed for the operations your program actually performs."
+
+[[areas.topics]]
+id = "vector-insertion"
+title = "What does insertion move?"
+units = ["AL-Foundational"]
+reading = "Sketch a vector of five labels in memory. Count how many labels move when you insert a sixth at the beginning, middle and end. Separate the cost of shifting labels from the cost of growing the allocation when capacity is exhausted."
+references = [{ author = "Brown Cognitive Engineering Lab", title = "Interactive Rust Book · Vectors", url = "https://rust-book.cs.brown.edu/ch08-01-vectors.html" }]
+
+[[areas]]
+id = "AR"
+title = "Architecture and Organization"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703773"
+units = [
+  { id = "AR-Logic", title = "Digital Logic and Digital Systems", anchor = "#_Toc166703778" },
+  { id = "AR-Representation", title = "Machine-Level Data Representation", anchor = "#_Toc166703779" },
+  { id = "AR-Assembly", title = "Assembly Level Machine Organization", anchor = "#_Toc166703780" },
+  { id = "AR-Memory", title = "Memory Hierarchy", anchor = "#_Toc166703781" },
+  { id = "AR-IO", title = "Interfacing and Communication", anchor = "#_Toc166703782" },
+  { id = "AR-Organization", title = "Functional Organization", anchor = "#_Toc166703783" },
+  { id = "AR-Performance-Energy", title = "Performance and Energy Efficiency", anchor = "#_Toc166703784" },
+  { id = "AR-Heterogeneity", title = "Heterogeneous Architectures", anchor = "#_Toc166703785" },
+  { id = "AR-Security", title = "Secure Processor Architectures", anchor = "#_Toc166703786" },
+  { id = "AR-Quantum", title = "Quantum Architectures", anchor = "#_Toc166703787" },
+  { id = "AR-SEP", title = "Sustainability Issues", anchor = "#_Toc166703788" },
+]
+
+[[areas]]
+id = "DM"
+title = "Data Management"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703793"
+units = [
+  { id = "DM-Data", title = "The Role of Data and the Data Life Cycle", anchor = "#_Toc166703798" },
+  { id = "DM-Core", title = "Core Database System Concepts", anchor = "#_Toc166703799" },
+  { id = "DM-Modeling", title = "Data Modeling", anchor = "#_Toc166703800" },
+  { id = "DM-Relational", title = "Relational Databases", anchor = "#_Toc166703801" },
+  { id = "DM-Querying", title = "Query Construction", anchor = "#_Toc166703802" },
+  { id = "DM-Processing", title = "Query Processing", anchor = "#_Toc166703803" },
+  { id = "DM-Internals", title = "DBMS Internals", anchor = "#_Toc166703804" },
+  { id = "DM-NoSQL", title = "NoSQL Systems", anchor = "#_Toc166703805" },
+  { id = "DM-Security", title = "Data Security and Privacy", anchor = "#_Toc166703806" },
+  { id = "DM-Analytics", title = "Data Analytics", anchor = "#_Toc166703807" },
+  { id = "DM-Distributed", title = "Distributed Databases/Cloud Computing", anchor = "#_Toc166703808" },
+  { id = "DM-Unstructured", title = "Semi-structured and Unstructured Databases", anchor = "#_Toc166703809" },
+  { id = "DM-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166703810" },
+]
+
+[[areas]]
+id = "FPL"
+title = "Foundations of Programming Languages"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703816"
+units = [
+  { id = "FPL-OOP", title = "Object-Oriented Programming", anchor = "#_Toc166703821" },
+  { id = "FPL-Functional", title = "Functional Programming", anchor = "#_Toc166703822" },
+  { id = "FPL-Logic", title = "Logic Programming", anchor = "#_Toc166703823" },
+  { id = "FPL-Scripting", title = "Shell Scripting", anchor = "#_Toc166703824" },
+  { id = "FPL-Event-Driven", title = "Event-Driven and Reactive Programming", anchor = "#_Toc166703825" },
+  { id = "FPL-Parallel", title = "Parallel and Distributed Computing", anchor = "#_Toc166703826" },
+  { id = "FPL-Aspect", title = "Aspect-Oriented Programming", anchor = "#_Toc166703827" },
+  { id = "FPL-Types", title = "Type Systems", anchor = "#_Toc166703828" },
+  { id = "FPL-Systems", title = "Systems Execution and Memory Model", anchor = "#_Toc166703829" },
+  { id = "FPL-Translation", title = "Language Translation and Execution", anchor = "#_Toc166703830" },
+  { id = "FPL-Abstraction", title = "Program Abstraction and Representation", anchor = "#_Toc166703831" },
+  { id = "FPL-Syntax", title = "Syntax Analysis", anchor = "#_Toc166703832" },
+  { id = "FPL-Semantics", title = "Compiler Semantic Analysis", anchor = "#_Toc166703833" },
+  { id = "FPL-Analysis", title = "Program Analysis and Analyzers", anchor = "#_Toc166703834" },
+  { id = "FPL-Code", title = "Code Generation", anchor = "#_Toc166703835" },
+  { id = "FPL-Run-Time", title = "Run-time Behavior and Systems", anchor = "#_Toc166703836" },
+  { id = "FPL-Constructs", title = "Advanced Programming Constructs", anchor = "#_Toc166703837" },
+  { id = "FPL-Pragmatics", title = "Language Pragmatics", anchor = "#_Toc166703838" },
+  { id = "FPL-Formalism", title = "Formal Semantics", anchor = "#_Toc166703839" },
+  { id = "FPL-Methodologies", title = "Formal Development Methodologies", anchor = "#_Toc166703840" },
+  { id = "FPL-Design", title = "Design Principles of Programming Languages", anchor = "#_Toc166703841" },
+  { id = "FPL-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166703842" },
+]
+summary = "Read a type declaration as a description of which values a program must handle."
+
+[[areas.topics]]
+id = "sum-types-and-cases"
+title = "Sum types and case analysis"
+units = ["FPL-Types", "FPL-Functional"]
+reading = "Represent a message as either a command or a reply. Add a third variant and predict which match expressions must change. Compare the compiler’s list of uncovered cases with the cases you would need in a proof about every message."
+references = [{ author = "Brown Cognitive Engineering Lab", title = "Interactive Rust Book · Match", url = "https://rust-book.cs.brown.edu/ch06-02-match.html" }]
+
+[[areas]]
+id = "GIT"
+title = "Graphics and Interactive Techniques"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703847"
+units = [
+  { id = "GIT-Fundamentals", title = "Fundamental Concepts", anchor = "#_Toc166703852" },
+  { id = "GIT-Visualization", title = "Visualization", anchor = "#_Toc166703853" },
+  { id = "GIT-Rendering", title = "Applied Rendering and Techniques", anchor = "#_Toc166703854" },
+  { id = "GIT-Modeling", title = "Geometric Modeling", anchor = "#_Toc166703855" },
+  { id = "GIT-Shading", title = "Shading and Advanced Rendering", anchor = "#_Toc166703856" },
+  { id = "GIT-Animation", title = "Computer Animation", anchor = "#_Toc166703857" },
+  { id = "GIT-Simulation", title = "Simulation", anchor = "#_Toc166703858" },
+  { id = "GIT-Immersion", title = "Immersion", anchor = "#_Toc166703859" },
+  { id = "GIT-Interaction", title = "Interaction", anchor = "#_Toc166703860" },
+  { id = "GIT-Image", title = "Image Processing", anchor = "#_Toc166703861" },
+  { id = "GIT-Physical", title = "Tangible/Physical Computing", anchor = "#_Toc166703862" },
+  { id = "GIT-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166703863" },
+]
+
+[[areas]]
+id = "HCI"
+title = "Human-Computer Interaction"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703869"
+units = [
+  { id = "HCI-User", title = "Understanding the User: Individual goals and interactions with others", anchor = "#_Toc166703874" },
+  { id = "HCI-Accountability", title = "Accountability and Responsibility in Design", anchor = "#_Toc166703875" },
+  { id = "HCI-Accessibility", title = "Accessibility and Inclusive Design", anchor = "#_Toc166703876" },
+  { id = "HCI-Evaluation", title = "Evaluating the Design", anchor = "#_Toc166703877" },
+  { id = "HCI-Design", title = "System Design", anchor = "#_Toc166703878" },
+  { id = "HCI-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166703879" },
+]
 
 [[areas]]
 id = "MSF"
 title = "Mathematical and Statistical Foundations"
-source = "https://csed.acm.org/mathematical-and-statistical-foundations/"
-units = ["MSF-Discrete"]
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703884"
+units = [
+  { id = "MSF-Discrete", title = "Discrete Mathematics", anchor = "#_Toc166703891" },
+  { id = "MSF-Probability", title = "Probability", anchor = "#_Toc166703892" },
+  { id = "MSF-Statistics", title = "Statistics", anchor = "#_Toc166703893" },
+  { id = "MSF-Linear", title = "Linear Algebra", anchor = "#_Toc166703894" },
+  { id = "MSF-Calculus", title = "MSF-Calculus", anchor = "#_Toc166703895" },
+]
 summary = "Use finite examples to decide what a statement claims before trying to prove it."
 
 [[areas.topics]]
@@ -26,29 +179,144 @@ reading = "A loop grows a sorted prefix by one element at a time. Write its inva
 references = [{ author = "Heather Macbeth", title = "The Mechanics of Proof · Induction", url = "https://hrmacbeth.github.io/math2001/06_Induction.html" }]
 
 [[areas]]
-id = "AL"
-title = "Algorithmic Foundations"
-source = "https://csed.acm.org/algorithms-and-complexity/"
-units = ["AL-Foundational"]
-summary = "Choose a data representation and measure the work needed for the operations your program actually performs."
-
-[[areas.topics]]
-id = "vector-insertion"
-title = "What does insertion move?"
-units = ["AL-Foundational"]
-reading = "Sketch a vector of five labels in memory. Count how many labels move when you insert a sixth at the beginning, middle and end. Separate the cost of shifting labels from the cost of growing the allocation when capacity is exhausted."
-references = [{ author = "Brown Cognitive Engineering Lab", title = "Interactive Rust Book · Vectors", url = "https://rust-book.cs.brown.edu/ch08-01-vectors.html" }]
+id = "NC"
+title = "Networking and Communication"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703901"
+units = [
+  { id = "NC-Fundamentals", title = "Fundamentals", anchor = "#_Toc166703906" },
+  { id = "NC-Applications", title = "Networked Applications", anchor = "#_Toc166703907" },
+  { id = "NC-Reliability", title = "Reliability Support", anchor = "#_Toc166703908" },
+  { id = "NC-Routing", title = "Routing and Forwarding", anchor = "#_Toc166703909" },
+  { id = "NC-SingleHop", title = "Single Hop Communication", anchor = "#_Toc166703910" },
+  { id = "NC-Security", title = "Network Security", anchor = "#_Toc166703911" },
+  { id = "NC-Mobility", title = "Mobility", anchor = "#_Toc166703912" },
+  { id = "NC-Emerging", title = "Emerging Topics", anchor = "#_Toc166703913" },
+]
 
 [[areas]]
-id = "FPL"
-title = "Foundations of Programming Languages"
-source = "https://csed.acm.org/programming-languages/"
-units = ["FPL-Types", "FPL-Functional"]
-summary = "Read a type declaration as a description of which values a program must handle."
+id = "OS"
+title = "Operating Systems"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703918"
+units = [
+  { id = "OS-Purpose", title = "Role and Purpose of Operating Systems", anchor = "#_Toc166703923" },
+  { id = "OS-Principles", title = "Principles of Operating System.", anchor = "#_Toc166703924" },
+  { id = "OS-Concurrency", title = "Concurrency", anchor = "#_Toc166703925" },
+  { id = "OS-Protection", title = "Protection and Safety", anchor = "#_Toc166703926" },
+  { id = "OS-Scheduling", title = "Scheduling", anchor = "#_Toc166703927" },
+  { id = "OS-Process", title = "Process Model", anchor = "#_Toc166703928" },
+  { id = "OS-Memory", title = "Memory Management", anchor = "#_Toc166703929" },
+  { id = "OS-Devices", title = "Device management", anchor = "#_Toc166703930" },
+  { id = "OS-Files", title = "File Systems API and Implementation", anchor = "#_Toc166703931" },
+  { id = "OS-Advanced-Files", title = "Advanced File systems", anchor = "#_Toc166703932" },
+  { id = "OS-Virtualization", title = "Virtualization", anchor = "#_Toc166703933" },
+  { id = "OS-Real-time", title = "Real-time and Embedded Systems", anchor = "#_Toc166703934" },
+  { id = "OS-Faults", title = "Fault tolerance", anchor = "#_Toc166703935" },
+  { id = "OS-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166703936" },
+]
 
-[[areas.topics]]
-id = "sum-types-and-cases"
-title = "Sum types and case analysis"
-units = ["FPL-Types", "FPL-Functional"]
-reading = "Represent a message as either a command or a reply. Add a third variant and predict which match expressions must change. Compare the compiler’s list of uncovered cases with the cases you would need in a proof about every message."
-references = [{ author = "Brown Cognitive Engineering Lab", title = "Interactive Rust Book · Match", url = "https://rust-book.cs.brown.edu/ch06-02-match.html" }]
+[[areas]]
+id = "PDC"
+title = "Parallel and Distributed Computing"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703941"
+units = [
+  { id = "PDC-Programs", title = "Programs", anchor = "#_Toc166703947" },
+  { id = "PDC-Communication", title = "Communication", anchor = "#_Toc166703948" },
+  { id = "PDC-Coordination", title = "Coordination", anchor = "#_Toc166703949" },
+  { id = "PDC-Evaluation", title = "Evaluation", anchor = "#_Toc166703950" },
+  { id = "PDC-Algorithms", title = "Algorithms", anchor = "#_Toc166703951" },
+]
+
+[[areas]]
+id = "SDF"
+title = "Software Development Fundamentals"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703957"
+units = [
+  { id = "SDF-Fundamentals", title = "Fundamental Programming Concepts and Practices", anchor = "#_Toc166703963" },
+  { id = "SDF-Data-Structures", title = "Fundamental Data Structures", anchor = "#_Toc166703964" },
+  { id = "SDF-Algorithms", title = "Algorithms", anchor = "#_Toc166703965" },
+  { id = "SDF-Practices", title = "Software Development Practices", anchor = "#_Toc166703966" },
+  { id = "SDF-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166703967" },
+]
+
+[[areas]]
+id = "SE"
+title = "Software Engineering"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703972"
+units = [
+  { id = "SE-Teamwork", title = "Teamwork", anchor = "#_Toc166703978" },
+  { id = "SE-Tools", title = "Tools and Environments", anchor = "#_Toc166703979" },
+  { id = "SE-Requirements", title = "Product Requirements", anchor = "#_Toc166703980" },
+  { id = "SE-Design", title = "Software Design", anchor = "#_Toc166703981" },
+  { id = "SE-Construction", title = "Software Construction", anchor = "#_Toc166703982" },
+  { id = "SE-Validation", title = "Software Verification and Validation", anchor = "#_Toc166703983" },
+  { id = "SE-Refactoring", title = "Refactoring and Code Evolution", anchor = "#_Toc166703984" },
+  { id = "SE-Reliability", title = "Software Reliability", anchor = "#_Toc166703985" },
+  { id = "SE-Formal", title = "Formal Methods", anchor = "#_Toc166703986" },
+]
+
+[[areas]]
+id = "SEC"
+title = "Security"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166703991"
+units = [
+  { id = "SEC-Foundations", title = "Foundational Security", anchor = "#_Toc166703997" },
+  { id = "SEC-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166703998" },
+  { id = "SEC-Coding", title = "Secure Coding", anchor = "#_Toc166703999" },
+  { id = "SEC-Crypto", title = "Cryptography", anchor = "#_Toc166704000" },
+  { id = "SEC-Engineering", title = "Security Analysis, Design, and Engineering", anchor = "#_Toc166704001" },
+  { id = "SEC-Forensics", title = "Digital Forensics", anchor = "#_Toc166704002" },
+  { id = "SEC-Governance", title = "Security Governance", anchor = "#_Toc166704003" },
+]
+
+[[areas]]
+id = "SEP"
+title = "Society, Ethics, and the Profession"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166704009"
+units = [
+  { id = "SEP-Context", title = "Social Context", anchor = "#_Toc166704014" },
+  { id = "SEP-Ethical-Analysis", title = "Methods for Ethical Analysis", anchor = "#_Toc166704015" },
+  { id = "SEP-Professional-Ethics", title = "Professional Ethics", anchor = "#_Toc166704016" },
+  { id = "SEP-IP", title = "Intellectual Property", anchor = "#_Toc166704017" },
+  { id = "SEP-Privacy", title = "Privacy and Civil Liberties", anchor = "#_Toc166704018" },
+  { id = "SEP-Communication", title = "Communication", anchor = "#_Toc166704019" },
+  { id = "SEP-Sustainability", title = "Sustainability", anchor = "#_Toc166704020" },
+  { id = "SEP-History", title = "Computing History", anchor = "#_Toc166704021" },
+  { id = "SEP-Economies", title = "Economies of Computing", anchor = "#_Toc166704022" },
+  { id = "SEP-Security", title = "Security Policies, Laws and Computer Crimes", anchor = "#_Toc166704023" },
+  { id = "SEP-DEIA", title = "Diversity, Equity, Inclusion, and Accessibility", anchor = "#_Toc166704024" },
+]
+
+[[areas]]
+id = "SF"
+title = "Systems Fundamentals"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166704029"
+units = [
+  { id = "SF-Overview", title = "Overview of Computer Systems", anchor = "#_Toc166704034" },
+  { id = "SF-Foundations", title = "Basic Concepts", anchor = "#_Toc166704035" },
+  { id = "SF-Resource", title = "Resource Management", anchor = "#_Toc166704036" },
+  { id = "SF-Performance", title = "System Performance", anchor = "#_Toc166704037" },
+  { id = "SF-Evaluation", title = "Performance Evaluation", anchor = "#_Toc166704038" },
+  { id = "SF-Reliability", title = "System Reliability", anchor = "#_Toc166704039" },
+  { id = "SF-Security", title = "System Security", anchor = "#_Toc166704040" },
+  { id = "SF-Design", title = "System Design", anchor = "#_Toc166704041" },
+  { id = "SF-SEP", title = "Society, Ethics, and the Profession", anchor = "#_Toc166704042" },
+]
+
+[[areas]]
+id = "SPD"
+title = "Specialized Platform Development"
+source = "https://csed.acm.org/wp-content/uploads/2025/11/CS2023-Report.htm#_Toc166704047"
+units = [
+  { id = "SPD-Common", title = "Common Aspects/Shared Concerns", anchor = "#_Toc166704052" },
+  { id = "SPD-Web", title = "Web Platforms", anchor = "#_Toc166704053" },
+  { id = "SPD-Mobile", title = "Mobile Platforms", anchor = "#_Toc166704054" },
+  { id = "SPD-Robot", title = "Robot Platforms", anchor = "#_Toc166704055" },
+  { id = "SPD-Embedded", title = "Embedded Platforms", anchor = "#_Toc166704056" },
+  { id = "SPD-Game", title = "Game Platforms", anchor = "#_Toc166704057" },
+  { id = "SPD-Interactive", title = "Interactive Computing Platforms", anchor = "#_Toc166704058" },
+  { id = "SPD-SEP/Mobile", title = "SPD-SEP/Mobile", anchor = "#_Toc166704059" },
+  { id = "SPD-SEP/Web", title = "SPD-SEP/Web", anchor = "#_Toc166704060" },
+  { id = "SPD-SEP/Game", title = "SPD-SEP/Game", anchor = "#_Toc166704061" },
+  { id = "SPD-SEP/Robotics", title = "SPD-SEP/Robotics", anchor = "#_Toc166704062" },
+  { id = "SPD-SEP/Interactive", title = "SPD-SEP/Interactive", anchor = "#_Toc166704063" },
+]

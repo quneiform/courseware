@@ -1,4 +1,4 @@
-use courseware_adapters::{Block, Course, QuestionKind};
+use crate::{Block, Course, QuestionKind};
 use std::{collections::BTreeSet, path::Path};
 
 fn course() -> Course {
@@ -221,4 +221,265 @@ fn broken_listing_reports_its_source_line_and_preserves_the_open_edition() {
         original.chapter("ch01-02-hello-world").unwrap().title,
         "Hello, World!"
     );
+}
+
+#[test]
+fn selected_cel_prompts_decode_from_the_command_using_the_public_schema() {
+    use buffa::Message;
+    use std::process::Command;
+    #[allow(dead_code, clippy::all)]
+    mod consumer {
+        include!(concat!(env!("OUT_DIR"), "/courseware_types.rs"));
+    }
+    use consumer::courseware::v05 as wire;
+
+    let courses = Path::new(env!("CARGO_MANIFEST_DIR")).join("../courses");
+    let root = courses.join("connected-lessons/root.json");
+    let map = courses.join("connected-lessons/learning-map.toml");
+    let book = course();
+    for (id, kind) in [
+        (
+            "87c3b09e-84d3-49d7-8680-0b2d068a7fc5",
+            wire::QuestionKind::SHORT_ANSWER,
+        ),
+        (
+            "0d78d302-eb3d-4ac7-a1ac-f2d661810744",
+            wire::QuestionKind::MULTIPLE_CHOICE,
+        ),
+        (
+            "8ef2f170-71d9-4f17-a688-b99d8c8072a8",
+            wire::QuestionKind::TRACING,
+        ),
+    ] {
+        let output = Command::new(env!("CARGO_BIN_EXE_validate-learning-map"))
+            .args([&root, &courses, &map])
+            .args(["--question-wire", "rust-book", id])
+            .output()
+            .unwrap();
+        assert!(
+            output.status.success(),
+            "{}",
+            String::from_utf8_lossy(&output.stderr)
+        );
+        let actual = wire::Question::decode_from_slice(&output.stdout).unwrap();
+        let original = book.question(id).unwrap();
+        assert_eq!(actual.id, id);
+        assert_eq!(actual.kind, kind);
+        assert_eq!(actual.prompt, original.prompt);
+        assert_eq!(actual.choices, original.choices);
+        assert_eq!(actual.starter, original.starter);
+        assert_eq!(actual.quiz, original.quiz);
+        assert_eq!(actual.multiple, original.multiple);
+    }
+}
+
+#[test]
+fn atomic_course_posits_cover_exactly_the_indexed_things_and_fields() {
+    use buffa::Message;
+    use learning_consumer::{qune::core, quneic::learning::v1};
+    use std::process::Command;
+    let courses = Path::new(env!("CARGO_MANIFEST_DIR")).join("../courses");
+    for alias in [
+        "rust-book",
+        "mechanics-of-proof",
+        "cs2023",
+        "connected-lessons",
+    ] {
+        let export = |mode: &str| {
+            let result = Command::new(env!("CARGO_BIN_EXE_validate-learning-map"))
+                .arg(courses.join("connected-lessons/root.json"))
+                .arg(&courses)
+                .arg(courses.join("connected-lessons/learning-map.toml"))
+                .args([mode, alias])
+                .output()
+                .unwrap();
+            assert!(
+                result.status.success(),
+                "{}",
+                String::from_utf8_lossy(&result.stderr)
+            );
+            result.stdout
+        };
+        let encoded = export("--course-posit");
+        assert_eq!(encoded, export("--course-posit"));
+        let index = v1::AdaptedCourse::decode_from_slice(&export("--adapted-course")).unwrap();
+        let mut expected = BTreeSet::new();
+        for (thing, name) in
+            std::iter::once((&*index.tablet_revision, "quneic.learning.v1.AdaptedCourse")).chain(
+                index
+                    .passages
+                    .iter()
+                    .map(|p| (&*p.passage.cell, "qn.tablet.v05.Chapter")),
+            )
+        {
+            for field in 1..=4 {
+                assert!(expected.insert((thing.encode_to_vec(), name.to_owned(), field)));
+            }
+        }
+        let posit = core::Posit::decode_from_slice(&encoded).unwrap();
+        for edit in posit.diff.edits.iter() {
+            let Some(core::ref_pattern::Pattern::Thing(thing)) = &edit.target.pattern else {
+                panic!("expected explicit thing")
+            };
+            let fields = &edit.path.path.elements;
+            assert_eq!(fields.len(), 1);
+            assert!(
+                expected.remove(&(
+                    thing.encode_to_vec(),
+                    edit.path.schema.full_name.clone(),
+                    fields[0].field_number.unwrap()
+                )),
+                "unexpected or duplicate field"
+            );
+        }
+        assert!(expected.is_empty(), "missing fields for {alias}");
+    }
+}
+
+#[allow(dead_code, clippy::all)]
+mod learning_consumer {
+    include!(concat!(env!("OUT_DIR"), "/schema.rs"));
+}
+
+#[test]
+fn catalog_publication_matches_every_field_of_the_pinned_root() {
+    use buffa::{Message, MessageName};
+    use learning_consumer::{cel::expr::value::Kind, qune::core, quneic::learning::v1};
+    use std::process::Command;
+    let courses = Path::new(env!("CARGO_MANIFEST_DIR")).join("../courses");
+    let export = |flag: &str| {
+        let output = Command::new(env!("CARGO_BIN_EXE_validate-learning-map"))
+            .arg(courses.join("connected-lessons/root.json"))
+            .arg(&courses)
+            .arg(courses.join("connected-lessons/learning-map.toml"))
+            .arg(flag)
+            .output()
+            .unwrap();
+        assert!(
+            output.status.success(),
+            "{}",
+            String::from_utf8_lossy(&output.stderr)
+        );
+        output.stdout
+    };
+    let bytes = export("--root-posit");
+    assert_eq!(bytes, export("--root-posit"));
+    let expected = v1::LearningRoot::decode_from_slice(&export("--root-wire")).unwrap();
+    let publication = core::Posit::decode_from_slice(&bytes).unwrap();
+    assert_eq!(publication.diff.edits.len(), 7);
+    let fields=publication.diff.edits.iter().enumerate().map(|(i,e)|{
+        assert!(matches!(&e.target.pattern,Some(core::ref_pattern::Pattern::Thing(target)) if **target==*expected.id));
+        assert_eq!(e.path.schema.full_name,v1::LearningRoot::FULL_NAME);
+        assert_eq!(e.path.path.elements.len(),1);
+        assert_eq!(e.path.path.elements[0].field_number,Some(i as i32+1));
+        let Some(core::edit::Op::Value(v))=&e.op else{panic!("expected literal")};
+        v.kind.as_ref().unwrap()
+    }).collect::<Vec<_>>();
+    fn message<T: Message + MessageName>(k: &Kind) -> T {
+        let Kind::ObjectValue(a) = k else {
+            panic!("expected typed message")
+        };
+        assert_eq!(a.type_url, T::TYPE_URL);
+        T::decode_from_slice(&a.value).unwrap()
+    }
+    fn messages<T: Message + MessageName>(k: &Kind) -> Vec<T> {
+        let Kind::ListValue(l) = k else {
+            panic!("expected repeated field")
+        };
+        l.values
+            .iter()
+            .map(|v| message(v.kind.as_ref().unwrap()))
+            .collect()
+    }
+    assert_eq!(message::<core::ThingRef>(fields[0]), *expected.id);
+    assert_eq!(messages::<v1::SourcePin>(fields[1]), expected.courses);
+    assert_eq!(messages::<v1::SourcePin>(fields[2]), expected.maps);
+    assert_eq!(messages::<v1::Topic>(fields[3]), expected.topics);
+    assert_eq!(messages::<v1::Outcome>(fields[4]), expected.outcomes);
+    assert_eq!(messages::<v1::Exercise>(fields[5]), expected.exercises);
+    let Kind::MapValue(aliases) = fields[6] else {
+        panic!("expected alias map")
+    };
+    assert_eq!(aliases.entries.len(), expected.aliases.len());
+    for (entry, (key, target)) in aliases.entries.iter().zip(&expected.aliases) {
+        assert!(matches!(&entry.key.kind,Some(Kind::StringValue(k)) if k==key));
+        assert_eq!(
+            message::<core::ThingRef>(entry.value.kind.as_ref().unwrap()),
+            *target
+        );
+    }
+}
+
+#[test]
+fn admitted_short_answer_uses_the_same_private_cel_key_at_the_exact_public_digest() {
+    use buffa::Message;
+    use buffa_types::google::protobuf::{BoolValue, StringValue};
+    use sha2::{Digest, Sha256};
+    use std::{
+        io::Write,
+        process::{Command, Stdio},
+    };
+
+    let courses = Path::new(env!("CARGO_MANIFEST_DIR")).join("../courses");
+    let overlay = courses.join("connected-lessons");
+    let run = |flags: &[&str], input: &[u8]| {
+        let mut child = Command::new(env!("CARGO_BIN_EXE_validate-learning-map"))
+            .arg(overlay.join("root.json"))
+            .arg(&courses)
+            .arg(overlay.join("learning-map.toml"))
+            .args(flags)
+            .stdin(Stdio::piped())
+            .stdout(Stdio::piped())
+            .stderr(Stdio::piped())
+            .spawn()
+            .unwrap();
+        child.stdin.take().unwrap().write_all(input).unwrap();
+        child.wait_with_output().unwrap()
+    };
+    let id = "87c3b09e-84d3-49d7-8680-0b2d068a7fc5";
+    let published = run(&["--question-wire", "rust-book", id], &[]);
+    assert!(
+        published.status.success(),
+        "{}",
+        String::from_utf8_lossy(&published.stderr)
+    );
+    let digest = format!("{:x}", Sha256::digest(&published.stdout));
+    let cell = run(&["--question-cell", "rust-book", id], &[]);
+    assert!(cell.status.success() && !cell.stdout.is_empty());
+    let check = |answer: &str, pin: &str| {
+        run(
+            &["--check-question", "rust-book", id, pin],
+            &StringValue {
+                value: answer.into(),
+                ..Default::default()
+            }
+            .encode_to_vec(),
+        )
+    };
+    for (answer, correct) in [("  MAIN ", true), ("start", false)] {
+        let result = check(answer, &digest);
+        assert!(
+            result.status.success(),
+            "{}",
+            String::from_utf8_lossy(&result.stderr)
+        );
+        assert_eq!(
+            BoolValue::decode_from_slice(&result.stdout).unwrap().value,
+            correct
+        );
+    }
+    assert!(!check("main", &"0".repeat(64)).status.success());
+    let choice = "0d78d302-eb3d-4ac7-a1ac-f2d661810744";
+    let prompt = run(&["--question-wire", "rust-book", choice], &[]);
+    assert!(prompt.status.success());
+    let wrong_kind = run(
+        &[
+            "--check-question",
+            "rust-book",
+            choice,
+            &format!("{:x}", Sha256::digest(prompt.stdout)),
+        ],
+        &[],
+    );
+    assert!(!wrong_kind.status.success());
 }

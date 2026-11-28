@@ -1,0 +1,5 @@
+id = "mechanics-of-proof/and-to-or@e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b"
+toolchain = "leanprover/lean4:v4.3.0"
+statement = "example {P Q : Prop} (h : P ∧ Q) : P ∨ Q := by"
+allowed_names = ["P", "Q", "h", "h.left", "h.right", "h.1", "h.2", "Or.inl", "Or.inr", "And.left", "And.right", "hp", "hq", "intro"]
+allowed_axioms = []

@@ -1,0 +1,11 @@
+id = "tick-loop-invariant"
+toolchain = "leanprover/lean4:v4.3.0"
+prelude = """
+def ticks : Nat → Nat
+  | 0 => 0
+  | n + 1 => ticks n + 2
+"""
+statement = "theorem tick_loop_invariant (n : Nat) : ticks n = n + n := by"
+# The author chooses the names used by the intended induction proof.
+allowed_names = ["ticks", "n"]
+allowed_axioms = []

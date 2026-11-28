@@ -1,0 +1,6 @@
+[module]
+name = "quneic.learning.sections.contract"
+version = "0.5.0"
+description = "Derived section navigation from admitted course material."
+[requires]
+"quneic.learning.contents.contract" = "=0.5.0"

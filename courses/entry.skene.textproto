@@ -1,0 +1,38 @@
+# Opening passage in the pinned CEL Rust Book: ch06-02-match (The `match` Control Flow Construct).
+requires {
+  schema {
+    full_name: "qn.tablet.reader.attributed.v05.Reader/Render"
+    descriptor {
+      algorithm: SHA256
+      value: "d\334Fe/\330\374G\002\326/j\226\225\341\333U+\\L\274\214\253e\211S\344\246;\177\334M"
+    }
+  }
+}
+provides {
+  schema {
+    full_name: "qn.tablet.v05.Chapter"
+    descriptor {
+      algorithm: SHA256
+      value: "HD\346\204\245(\364\241\314\346\322\235\200\246x\373y\340\234\005\1776\227:\345*&z\210\355d^"
+    }
+  }
+  provider {
+    uuid {
+      value: "\242\245\305\232\245\345P\002\203\356lZ\303\321\356}"
+    }
+  }
+}
+provides {
+  schema {
+    full_name: "qn.tablet.reader.v05.Actions"
+    descriptor {
+      algorithm: SHA256
+      value: "\340F\205\000f\270m\001\261\302\205\246\234\250t\007\242\237\304\035y\266\3362\276\002\212\244|\225\210\177"
+    }
+  }
+  provider {
+    uuid {
+      value: "\242\245\305\232\245\345P\002\203\356lZ\303\321\356}"
+    }
+  }
+}

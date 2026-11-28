@@ -1,0 +1,23 @@
+format_version = 1
+id = "connected-lessons"
+
+[[placements]]
+id = "cs2023-to-images"
+at = { tablet = "cs2023", cell = "images-and-preimages" }
+exercise = { tablet = "connected-lessons", cell = "images-and-preimages" }
+topic = "sets-and-functions"
+assesses = "image-preimage-inclusion"
+
+[[placements]]
+id = "rust-enums-to-images"
+at = { tablet = "rust-book", cell = "ch06-02-match" }
+exercise = { tablet = "connected-lessons", cell = "images-and-preimages" }
+topic = "sets-and-functions"
+assesses = "image-preimage-inclusion"
+
+[[placements]]
+id = "macbeth-functions-to-images"
+at = { tablet = "mechanics-of-proof", cell = "08-functions--composition-of-functions" }
+exercise = { tablet = "connected-lessons", cell = "images-and-preimages" }
+topic = "sets-and-functions"
+assesses = "image-preimage-inclusion"
